@@ -4,64 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K. Allen Tech Services | Kingston, Jamaica</title>
-    
     <link rel="icon" type="image/png" href="logo.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --dark-blue: #0a192f; --light-blue: #00d2ff; --text-gray: #8892b0; --card-bg: #112240; --accent-glow: rgba(0, 210, 255, 0.3); }
         
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--dark-blue); color: white; line-height: 1.6; margin: 0; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--dark-blue); color: white; line-height: 1.6; margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
 
-        /* FIXED: Centered Status Badge */
-        .header-content {
+        /* HEADER ALIGNMENT FIX */
+        header { 
+            padding: 60px 20px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            background: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.9)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--light-blue);
         }
 
         .status-badge {
             display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1);
-            color: #00ff88; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem;
-            font-weight: bold; margin-bottom: 25px; border: 1px solid #00ff88;
+            color: #00ff88; padding: 8px 20px; border-radius: 30px; font-size: 0.85rem;
+            font-weight: bold; margin-bottom: 20px; border: 1px solid #00ff88;
         }
-        .pulse { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; margin-right: 10px; animation: pulse-animation 2s infinite; }
+        .pulse { width: 10px; height: 10px; background: #00ff88; border-radius: 50%; margin-right: 10px; animation: pulse-animation 2s infinite; }
         @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } }
 
-        header { 
-            padding: 80px 20px; 
-            background: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover; border-bottom: 2px solid var(--light-blue);
-        }
+        .logo-img { width: 140px; border-radius: 50%; border: 4px solid var(--light-blue); margin-bottom: 15px; background: white; transition: 0.5s; }
 
-        .logo-img { width: 150px; border-radius: 50%; border: 4px solid var(--light-blue); margin-bottom: 20px; background: white; transition: 0.5s; }
-        .logo-img:hover { transform: rotate(360deg); box-shadow: 0 0 30px var(--light-blue); }
-
-        .container { max-width: 1200px; margin: auto; padding: 50px 20px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
         
-        /* FIXED GRID: Ensures all items show on all screens */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 30px; 
+        /* FLEXBOX FIX: This forces all cards to stay visible and wrap to new lines */
+        .services-flex { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
             width: 100%;
         }
         
-        .card { background: var(--card-bg); border: 1px solid #233554; border-radius: 15px; overflow: hidden; transition: 0.4s; position: relative; display: flex; flex-direction: column; }
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid #233554; 
+            border-radius: 15px; 
+            width: 350px; /* Fixed width so they don't disappear */
+            flex-grow: 1;
+            max-width: 400px;
+            overflow: hidden; 
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
         .card:hover { transform: translateY(-10px); border-color: var(--light-blue); box-shadow: 0 10px 30px var(--accent-glow); }
-        .card-img { width: 100%; height: 220px; object-fit: cover; opacity: 0.8; transition: 0.4s; }
-        .card:hover .card-img { opacity: 1; }
+        .card-img { width: 100%; height: 220px; object-fit: cover; }
 
-        .contact-dashboard { background: rgba(17, 34, 64, 0.5); border: 1px solid #233554; border-radius: 20px; padding: 40px; margin-top: 60px; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-        .contact-item { background: rgba(10, 25, 47, 0.8); padding: 20px; border-radius: 12px; text-decoration: none; color: white; display: block; border: 1px solid transparent; transition: 0.3s; }
-        .contact-item:hover { border-color: var(--light-blue); background: var(--card-bg); }
+        .contact-dashboard { background: rgba(17, 34, 64, 0.5); border: 1px solid #233554; border-radius: 20px; padding: 30px; margin-top: 60px; width: 100%; box-sizing: border-box; }
+        .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
+        .contact-item { background: rgba(10, 25, 47, 0.8); padding: 15px 25px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid transparent; min-width: 250px; text-align: center; }
+        .contact-item:hover { border-color: var(--light-blue); }
 
-        .btn { display: inline-block; background: var(--light-blue); color: var(--dark-blue); padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4); }
-        .whatsapp-float { position: fixed; width: 65px; height: 65px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        .btn { display: inline-block; background: var(--light-blue); color: var(--dark-blue); padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; margin-top: 20px; }
+        .whatsapp-float { position: fixed; width: 65px; height: 65px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -69,58 +76,56 @@
 <a href="https://wa.me/18763833293" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <header>
-    <div class="header-content">
-        <div class="status-badge"><div class="pulse"></div> AVAILABLE FOR REPAIRS</div>
-        <img src="logo.png" alt="K. Allen Tech Logo" class="logo-img">
-        <h1 style="font-size: 3.2rem; margin: 10px 0;">K. ALLEN TECH</h1>
-        <p style="font-size: 1.4rem; color: var(--light-blue); margin-top: 0;">Father & Son: Trusted Tech Repair & Consulting</p>
-    </div>
+    <div class="status-badge"><div class="pulse"></div> AVAILABLE FOR REPAIRS</div>
+    <img src="logo.png" alt="K. Allen Tech Logo" class="logo-img">
+    <h1 style="font-size: 3rem; margin: 0;">K. ALLEN TECH</h1>
+    <p style="font-size: 1.2rem; color: var(--light-blue); margin: 5px 0;">Father & Son: Trusted Tech Repair</p>
 </header>
 
 <div class="container">
-    <div class="grid">
+    <div class="services-flex">
         <div class="card">
             <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div style="padding: 25px;"><h3>💻 Computer Repair</h3><p>Motherboard diagnostics, component upgrades, and system optimization.</p></div>
+            <div style="padding: 20px;"><h3>💻 Computer Repair</h3><p>Motherboard diagnostics, hardware upgrades, and system cleaning.</p></div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 25px;"><h3>🖨️ Printer Servicing</h3><p>Maintenance for Laser and Inkjet units. Clearing jams and hardware fixes.</p></div>
+            <div style="padding: 20px;"><h3>🖨️ Printer Servicing</h3><p>Maintenance for Laser and Inkjet. Jams, fusers, and roller repairs.</p></div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div style="padding: 25px;"><h3>📱 Phone Support</h3><p>Screen replacements, precision hardware repair, and software flashing.</p></div>
+            <div style="padding: 20px;"><h3>📱 Phone Support</h3><p>Screen replacements, battery swaps, and software flashing.</p></div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 25px;"><h3>🛡️ Virus & Security</h3><p>Malware removal and data protection to keep your digital life safe.</p></div>
+            <div style="padding: 20px;"><h3>🛡️ Virus & Security</h3><p>Ransomware removal and proactive protection for your data.</p></div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 25px;"><h3>📊 Tech Consulting</h3><p>Expert IT advice and infrastructure planning for home and business.</p></div>
+            <div style="padding: 20px;"><h3>📊 Tech Consulting</h3><p>Business IT strategy and infrastructure planning in Kingston.</p></div>
         </div>
     </div>
 
     <div class="contact-dashboard">
-        <h2 style="text-align: center; color: var(--light-blue);">Direct Contact Channels</h2>
+        <h2 style="text-align: center; color: var(--light-blue); margin: 0;">Contact Us</h2>
         <div class="contact-grid">
-            <a href="tel:+18763833293" class="contact-item"><i class="fas fa-phone"></i> 876-383-3293<span>Main Support</span></a>
-            <a href="tel:+18763791037" class="contact-item"><i class="fas fa-phone-alt"></i> 876-379-1037<span>Secondary Line</span></a>
+            <a href="tel:+18763833293" class="contact-item"><i class="fas fa-phone"></i> 876-383-3293</a>
+            <a href="tel:+18763791037" class="contact-item"><i class="fas fa-phone-alt"></i> 876-379-1037</a>
             <a href="mailto:k.allentechrepair@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> k.allentechrepair@gmail.com</a>
             <a href="mailto:kdahc42@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> kdahc42@gmail.com</a>
             <a href="mailto:marquino.allen16@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> marquino.allen16@gmail.com</a>
         </div>
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn">OPEN BOOKING FORM</a>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn">BOOK A REPAIR</a>
         </div>
     </div>
 </div>
 
-<footer style="text-align: center; padding: 40px; color: var(--text-gray); border-top: 1px solid #233554;">
+<footer style="text-align: center; padding: 40px; color: var(--text-gray);">
     <p>&copy; 2026 K. Allen Tech Services | Kingston, Jamaica</p>
 </footer>
 
