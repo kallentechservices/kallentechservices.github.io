@@ -11,110 +11,148 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --dark-bg: #020617; --light-blue: #00d2ff; --neon-green: #00ff88; --glass: rgba(15, 23, 42, 0.9); }
-
-        body { 
-            margin: 0; padding: 0; background-color: var(--dark-bg);
-            background-image: radial-gradient(circle at 2px 2px, rgba(0, 210, 255, 0.1) 1px, transparent 0);
-            background-size: 30px 30px; color: white; font-family: 'Segoe UI', sans-serif;
+        :root { 
+            --dark-bg: #020617; 
+            --light-blue: #00d2ff; 
+            --neon-green: #00ff88; 
+            --glass: rgba(15, 23, 42, 0.95); 
         }
 
-        header { padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--light-blue); }
+        /* 1. CREATIVE BACKGROUND WITH IMAGERY */
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--dark-bg);
+            /* Tech Circuit Background Pattern */
+            background-image: 
+                linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.9)),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            color: white; font-family: 'Segoe UI', sans-serif;
+        }
+
+        header { 
+            padding: 80px 20px; text-align: center; 
+            background: radial-gradient(circle at center, rgba(0, 210, 255, 0.15) 0%, transparent 80%);
+        }
 
         .status-badge {
             display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); 
             color: var(--neon-green); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--neon-green);
-            margin: 0 auto 20px auto; font-weight: bold; letter-spacing: 1px;
+            margin: 0 auto 20px auto; font-weight: bold; font-size: 0.9rem;
         }
         .dot { width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; margin-right: 10px; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } }
 
-        .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; }
+        .logo-img { width: 140px; border-radius: 50%; border: 4px solid var(--light-blue); margin: 0 auto 20px auto; display: block; background: white; }
 
-        /* SOCIAL DOCK (ALL IN ONE PLACE) */
-        .social-dock {
+        /* 2. THE LEFT SOCIAL TILES (ALL 4) */
+        .side-dock {
             position: fixed; left: 20px; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 12px; z-index: 1000;
+            display: flex; flex-direction: column; gap: 15px; z-index: 1000;
         }
-        .social-icon {
-            width: 48px; height: 48px; background: var(--glass); border: 1px solid rgba(0, 210, 255, 0.3);
+        .side-tile {
+            width: 50px; height: 50px; background: var(--glass); border: 1px solid var(--light-blue);
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
             color: white; text-decoration: none; transition: 0.3s; font-size: 22px;
         }
-        .social-icon:hover { background: var(--light-blue); color: var(--dark-bg); transform: translateX(5px); }
-        .wa-icon:hover { background: #25d366 !important; border-color: #25d366; }
+        .side-tile:hover { transform: scale(1.1) translateX(5px); background: var(--light-blue); color: var(--dark-bg); }
+        .wa-tile:hover { background: #25d366 !important; border-color: #25d366 !important; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-        /* SAFE-FLOW GRID: Prevents items from disappearing */
-        .services-grid { 
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; 
-        }
+        /* 3. SERVICE GRID (SAFE-FLOW) */
+        .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         .card { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.05); 
+            background: var(--glass); border: 1px solid rgba(0, 210, 255, 0.1); 
             border-radius: 20px; width: 340px; overflow: hidden; transition: 0.4s;
+            backdrop-filter: blur(10px);
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--light-blue); }
+        .card:hover { transform: translateY(-10px); border-color: var(--light-blue); box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2); }
         .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 25px; }
 
-        /* THE COMMAND CENTER */
+        /* 4. THE COMMAND CENTER & ADDRESS */
         .contact-hub { 
-            margin-top: 80px; padding: 50px 20px; background: rgba(0, 210, 255, 0.03);
-            border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.1); text-align: center;
+            margin-top: 80px; padding: 60px 20px; background: rgba(0, 210, 255, 0.05);
+            border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center;
+            backdrop-filter: blur(15px);
         }
-        .hub-grid { 
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0;
-        }
+        .address-box { margin-bottom: 40px; }
+        .address-box i { color: var(--light-blue); font-size: 2rem; margin-bottom: 10px; }
+        .address-box p { font-size: 1.4rem; font-weight: bold; margin: 0; letter-spacing: 1px; }
+
+        .hub-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
         .hub-item {
             background: var(--glass); padding: 20px; border-radius: 15px; min-width: 280px;
             text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05);
             display: flex; flex-direction: column; align-items: center; transition: 0.3s;
         }
-        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); }
+        .hub-item:hover { border-color: var(--light-blue); transform: scale(1.03); }
         .hub-item i { font-size: 1.8rem; color: var(--light-blue); margin-bottom: 10px; }
 
         .btn-glow { 
             display: inline-block; background: var(--light-blue); color: #020617; 
-            padding: 18px 50px; border-radius: 12px; text-decoration: none; 
-            font-weight: 800; font-size: 1.1rem; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); transition: 0.3s;
+            padding: 20px 60px; border-radius: 15px; text-decoration: none; 
+            font-weight: 800; font-size: 1.2rem; box-shadow: 0 0 25px rgba(0, 210, 255, 0.4); 
+            transition: 0.3s; text-transform: uppercase;
         }
         .btn-glow:hover { background: white; transform: scale(1.05); }
 
-        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-socials a { color: white; margin: 0 12px; font-size: 1.4rem; transition: 0.3s; }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-socials a { color: white; margin: 0 15px; font-size: 1.6rem; transition: 0.3s; }
         .footer-socials a:hover { color: var(--light-blue); }
 
-        @media (max-width: 850px) { .social-dock { display: none; } }
+        @media (max-width: 900px) { .side-dock { display: none; } }
     </style>
 </head>
 <body>
 
-<div class="social-dock">
-    <a href="https://wa.me/18763833293" class="social-icon wa-icon" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/share/174szanVGW/" class="social-icon" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/k.allentechrepair/" class="social-icon" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/company/k-allen-tech-services/" class="social-icon" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<div class="side-dock">
+    <a href="https://wa.me/18763833293" class="side-tile wa-tile" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/share/174szanVGW/" class="side-tile" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/k.allentechrepair/" class="side-tile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/k-allen-tech-services/" class="side-tile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
 </div>
 
 <header>
-    <div class="status-badge"><div class="dot"></div> SYSTEMS ONLINE / REPAIRS OPEN</div>
+    <div class="status-badge"><div class="dot"></div> SYSTEMS ONLINE / KINGSTON 10</div>
     <img src="logo.png" alt="K. Allen Tech" class="logo-img">
-    <h1 style="margin: 0; font-size: 3rem; letter-spacing: 1px;">K. ALLEN TECH</h1>
-    <p style="color: var(--light-blue); margin-top: 10px; font-size: 1.2rem;">Father & Son: Trusted Tech Repair</p>
+    <h1 style="margin: 0; font-size: 3.2rem; letter-spacing: 2px;">K. ALLEN TECH</h1>
+    <p style="color: var(--light-blue); margin-top: 10px; font-size: 1.4rem;">Father & Son: Trusted Tech Repair</p>
 </header>
 
 <div class="container">
     <div class="services-grid">
-        <div class="card"><img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Computer Repair</h3><p>Motherboard diagnostics, hardware upgrades, and precision cleaning.</p></div></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Printer Servicing</h3><p>Laser and Inkjet maintenance. Mechanical fixes and roller restoration.</p></div></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Phone Support</h3><p>Screen precision repair, battery swaps, and software flashing.</p></div></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Virus & Security</h3><p>Complete malware removal and proactive protection for your devices.</p></div></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Tech Consulting</h3><p>Expert infrastructure advice for home-office and small business.</p></div></div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1591405351990-4726e331f141?auto=format&fit=crop&w=800&q=80" class="card-img">
+            <div class="card-content"><h3>Computer Repair</h3><p>Motherboard diagnostics, hardware upgrades, and precision cleaning.</p></div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <div class="card-content"><h3>Printer Servicing</h3><p>Maintenance for Laser and Inkjet units. Mechanical fixes and roller restoration.</p></div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img">
+            <div class="card-content"><h3>Phone Support</h3><p>Screen precision repair, battery swaps, and software flashing.</p></div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" class="card-img">
+            <div class="card-content"><h3>Virus & Security</h3><p>Complete malware removal and proactive protection for your devices.</p></div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <div class="card-content"><h3>Tech Consulting</h3><p>Expert infrastructure advice for home-office and small business.</p></div>
+        </div>
     </div>
 
     <div class="contact-hub">
-        <h2 style="font-size: 2.2rem; margin: 0;">THE COMMAND CENTER</h2>
+        <div class="address-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Grovedale Drive, Kingston 10</p>
+            <span style="color: var(--light-blue);">Jamaica, W.I.</span>
+        </div>
+
         <div class="hub-grid">
             <a href="tel:+18763833293" class="hub-item"><i class="fas fa-phone-alt"></i><span>876-383-3293</span></a>
             <a href="tel:+18763791037" class="hub-item"><i class="fas fa-phone"></i><span>876-379-1037</span></a>
@@ -122,12 +160,15 @@
             <a href="mailto:kdahc42@gmail.com" class="hub-item"><i class="fas fa-envelope-open"></i><span>kdahc42@gmail.com</span></a>
             <a href="mailto:marquino.allen16@gmail.com" class="hub-item"><i class="fas fa-paper-plane"></i><span>marquino.allen16@gmail.com</span></a>
         </div>
-        <div class="booking-zone"><a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow">INITIATE REPAIR TICKET</a></div>
+
+        <div class="booking-zone">
+            <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow">INITIATE REPAIR TICKET</a>
+        </div>
     </div>
 </div>
 
 <footer>
-    <div class="footer-socials" style="margin-bottom: 25px;">
+    <div class="footer-socials" style="margin-bottom: 30px;">
         <a href="https://wa.me/18763833293" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.facebook.com/share/174szanVGW/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/k.allentechrepair/" target="_blank"><i class="fab fa-instagram"></i></a>
