@@ -11,7 +11,7 @@
       "logo": "https://k-allen-tech.github.io/logo.png",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "39 Grovedale Drive",
+        "streetAddress": "Grovedale Drive",
         "addressLocality": "Kingston",
         "addressRegion": "St. Andrew",
         "addressCountry": "JM"
@@ -33,98 +33,100 @@
             --light-blue: #00d2ff; 
             --neon-green: #00ff88; 
             --card-glass: rgba(13, 17, 23, 0.85); 
-            --whatsapp: #25d366;
-            --facebook: #1877F2;
-            --instagram: #E4405F;
-            --linkedin: #0077B5;
+            --whatsapp: #25d366; --facebook: #1877F2; --instagram: #E4405F; --linkedin: #0077B5;
         }
 
         body { 
             margin: 0; padding: 0; background-color: var(--dark-bg);
             color: #ffffff; font-family: 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 0% 0%, rgba(0, 210, 255, 0.05) 0%, transparent 40%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
-        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--light-blue), var(--neon-green)); z-index: 100001; width: 0%; }
+        /* AWESOME FEATURE: PARTICLE CANVAS */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.4; }
 
-        /* SIDE DOCK */
-        .side-dock { position: fixed; left: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100000; }
-        .side-tile { width: 48px; height: 48px; background: rgba(13, 17, 23, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; font-size: 22px; backdrop-filter: blur(10px); }
-        .side-tile i { color: white; transition: 0.3s; }
-        .side-tile:hover { transform: scale(1.1) translateX(10px); border-color: white; }
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--light-blue), var(--neon-green)); z-index: 100001; width: 0%; transition: 0.2s; }
+
+        /* SIDE DOCK - Branded & Balanced */
+        .side-dock { position: fixed; left: 15px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100000; }
+        .side-tile { width: 50px; height: 50px; background: rgba(13, 17, 23, 0.9); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
+        .side-tile i { color: white; font-size: 22px; transition: 0.3s; }
+        .side-tile:hover { transform: scale(1.15) translateX(10px); border-color: white; }
         .side-tile.wa:hover i { color: var(--whatsapp); }
         .side-tile.fb:hover i { color: var(--facebook); }
         .side-tile.ig:hover i { color: var(--instagram); }
         .side-tile.li:hover i { color: var(--linkedin); }
 
-        /* HEADER ALIGNMENT FIX */
-        header { padding: 80px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .logo-container { position: relative; width: 140px; height: 140px; margin: 20px 0; display: flex; justify-content: center; align-items: center; }
-        .logo-img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--light-blue); background: white; z-index: 2; object-fit: contain; }
-        .scan-line {
-            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--neon-green); box-shadow: 0 0 15px var(--neon-green);
-            z-index: 3; animation: scan 3s linear infinite; opacity: 0.7;
-        }
+        /* HEADER & SCAN ANIMATION */
+        header { padding: 100px 20px; text-align: center; position: relative; }
+        .logo-container { position: relative; width: 150px; height: 150px; margin: 0 auto 25px auto; }
+        .logo-img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--light-blue); background: white; z-index: 2; position: relative; box-shadow: 0 0 30px rgba(0, 210, 255, 0.2); }
+        .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--neon-green); box-shadow: 0 0 20px var(--neon-green); z-index: 3; animation: scan 3.5s linear infinite; border-radius: 10px; opacity: 0.8; }
         @keyframes scan { 0% { top: 0; opacity: 0; } 10%, 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 
-        .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 10px; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
-        .dot { width: 8px; height: 8px; background: var(--neon-green); border-radius: 50%; margin-right: 10px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.6); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } }
+        .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 10px 22px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 20px; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        .dot { width: 10px; height: 10px; background: var(--neon-green); border-radius: 50%; margin-right: 12px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.6); } 100% { box-shadow: 0 0 0 12px rgba(0, 255, 136, 0); } }
 
-        h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; color: #fff; }
+        h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: 6px; color: #fff; text-shadow: 0 0 30px rgba(0, 210, 255, 0.4); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
-        .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
-        .card { background: var(--card-glass); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 340px; min-height: 420px; overflow: hidden; transition: 0.4s; backdrop-filter: blur(12px); }
-        .card:hover { transform: translateY(-10px); border-color: var(--light-blue); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .card-img { width: 100%; height: 190px; object-fit: cover; }
-        .card-content { padding: 25px; }
-        .card-content h3 { color: var(--light-blue); margin-bottom: 12px; font-weight: 800; }
-        .card-content p { line-height: 1.6; color: #eee; }
 
-        .log-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 30px; }
-        .log-card { background: rgba(255,255,255,0.03); padding: 20px; border-left: 5px solid var(--neon-green); border-radius: 0 15px 15px 0; transition: 0.3s; }
-        .log-card:hover { background: rgba(255,255,255,0.1); transform: translateX(10px); }
+        /* SERVICES CARDS */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { background: var(--card-glass); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(15px); }
+        .card:hover { transform: translateY(-15px) scale(1.02); border-color: var(--light-blue); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
+        .card:hover .card-img { filter: brightness(1.1); }
+        .card-content { padding: 30px; }
+        .card-content h3 { color: var(--light-blue); margin: 0 0 15px 0; font-size: 1.5rem; font-weight: 800; }
+        .card-content p { line-height: 1.7; color: #d1d5db; margin: 0; }
 
-        /* COMMAND CENTER - ALL DATA RESTORED */
-        .contact-hub { padding: 60px 20px; background: rgba(13, 17, 23, 0.9); border-radius: 40px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; margin-top: 80px; }
-        .address-highlight { background: rgba(0, 255, 136, 0.1); border: 2px solid var(--neon-green); padding: 15px 30px; border-radius: 15px; display: inline-block; margin-bottom: 40px; color: #fff; font-weight: 900; }
+        /* LOGS SECTION */
+        .log-section { margin-top: 120px; }
+        .log-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .log-card { background: rgba(255,255,255,0.02); padding: 25px; border-left: 4px solid var(--neon-green); border-radius: 0 20px 20px 0; transition: 0.4s; }
+        .log-card:hover { background: rgba(255,255,255,0.08); transform: translateX(12px); }
+        .log-card h4 { margin: 0 0 8px 0; color: #fff; font-size: 1.2rem; }
+        .log-card p { margin: 0; color: #9ca3af; font-size: 0.95rem; }
 
-        .hub-list { max-width: 600px; margin: 0 auto 50px auto; display: flex; flex-direction: column; gap: 12px; }
-        .hub-row { background: rgba(255,255,255,0.05); padding: 18px 25px; border-radius: 12px; text-decoration: none; color: #fff; border: 1px solid transparent; display: flex; align-items: center; gap: 20px; transition: 0.3s; text-align: left; }
-        .hub-row i { color: var(--light-blue); width: 20px; text-align: center; }
-        .hub-row .label { color: var(--neon-green); font-size: 0.7rem; font-weight: 900; border: 1px solid var(--neon-green); padding: 3px 8px; border-radius: 5px; min-width: 60px; text-align: center; }
-        .hub-row span.detail { font-family: 'Courier New', monospace; font-weight: bold; }
-        .hub-row:hover { border-color: var(--light-blue); background: rgba(255,255,255,0.1); transform: scale(1.02); }
+        /* COMMAND CENTER - FULL DATA */
+        .contact-hub { padding: 80px 25px; background: rgba(13, 17, 23, 0.95); border-radius: 40px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; margin-top: 100px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .address-highlight { background: rgba(0, 255, 136, 0.05); border: 1px solid var(--neon-green); padding: 18px 35px; border-radius: 15px; display: inline-block; margin-bottom: 45px; color: #fff; font-weight: 800; letter-spacing: 1px; }
 
-        .btn-glow { background: var(--light-blue); color: #000; padding: 22px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; font-size: 1.2rem; transition: 0.3s; display: inline-block; margin-bottom: 40px; }
-        .btn-glow:hover { box-shadow: 0 0 30px var(--light-blue); transform: scale(1.05); }
+        .hub-list { max-width: 650px; margin: 0 auto 50px auto; display: flex; flex-direction: column; gap: 15px; }
+        .hub-row { background: rgba(255,255,255,0.03); padding: 20px 30px; border-radius: 16px; text-decoration: none; color: #fff; border: 1px solid transparent; display: flex; align-items: center; gap: 20px; transition: 0.3s; text-align: left; }
+        .hub-row i { color: var(--light-blue); width: 25px; font-size: 1.2rem; }
+        .hub-row .label { color: var(--neon-green); font-size: 0.65rem; font-weight: 900; border: 1px solid var(--neon-green); padding: 4px 10px; border-radius: 6px; min-width: 70px; text-align: center; text-transform: uppercase; }
+        .hub-row span.detail { font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.1rem; }
+        .hub-row:hover { border-color: var(--light-blue); background: rgba(255,255,255,0.08); transform: scale(1.03); }
 
-        .footer-socials { display: flex; justify-content: center; gap: 30px; }
-        .footer-socials a { font-size: 2.2rem; transition: 0.3s; }
+        .btn-glow { background: var(--light-blue); color: #000; padding: 25px 70px; border-radius: 18px; text-decoration: none; font-weight: 900; font-size: 1.3rem; transition: 0.4s; display: inline-block; margin-bottom: 50px; box-shadow: 0 10px 20px rgba(0,210,255,0.2); }
+        .btn-glow:hover { box-shadow: 0 0 40px var(--light-blue); transform: scale(1.05) translateY(-5px); background: #fff; }
+
+        .footer-socials { display: flex; justify-content: center; gap: 40px; margin-bottom: 20px; }
+        .footer-socials a { font-size: 2.5rem; transition: 0.4s; }
         .footer-socials .wa-icon { color: var(--whatsapp); }
         .footer-socials .fb-icon { color: var(--facebook); }
         .footer-socials .ig-icon { color: var(--instagram); }
         .footer-socials .li-icon { color: var(--linkedin); }
-        .footer-socials a:hover { transform: translateY(-8px); filter: brightness(1.2); }
+        .footer-socials a:hover { transform: translateY(-10px) rotate(5deg); filter: brightness(1.3); }
 
-        footer { text-align: center; padding: 60px 20px; color: #444; font-weight: bold; }
+        footer { text-align: center; padding: 100px 20px; color: #374151; font-weight: 900; letter-spacing: 1px; }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 600px) { h1 { font-size: 2.4rem; } .card { width: 100%; } .hub-row span.detail { font-size: 0.9rem; } }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .side-dock { display: none; } /* Hide side icons on mobile for cleaner look */
+            .hub-row span.detail { font-size: 0.9rem; }
+        }
     </style>
 </head>
 <body>
 
+<canvas id="bg-canvas"></canvas>
 <div id="scroll-progress"></div>
 
 <div class="side-dock">
@@ -141,35 +143,35 @@
         <img src="logo.png" alt="K. Allen Tech" class="logo-img">
     </div>
     <h1>K. ALLEN TECH</h1>
-    <p style="color: var(--light-blue); font-weight: 900; letter-spacing: 2px;">INDUSTRIAL SUPPORT • PRECISION HARDWARE REPAIR</p>
+    <p style="color: var(--light-blue); font-weight: 900; letter-spacing: 3px; margin-top: 15px;">INDUSTRIAL SUPPORT • PRECISION HARDWARE REPAIR</p>
 </header>
 
 <div class="container">
     <div class="services-grid">
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content"><h3>Hardware & OS</h3><p>Windows 11 optimization, system deep-cleans, and high-performance component sourcing.</p></div>
+            <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800" class="card-img">
+            <div class="card-content"><h3>Hardware & OS</h3><p>High-performance component sourcing and Windows 11 system optimization.</p></div>
         </div>
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div class="card-content"><h3>Printer Specialist</h3><p>Full mechanical restoration for thermal receipt, office laser, and industrial ID printers.</p></div>
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800" class="card-img">
+            <div class="card-content"><h3>Printer Specialist</h3><p>Mechanical restoration for thermal receipt, laser, and industrial ID printers.</p></div>
         </div>
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content"><h3>Network Shares</h3><p>Office data configuration and security auditing to ensure seamless team collaboration.</p></div>
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800" class="card-img">
+            <div class="card-content"><h3>Network Shares</h3><p>Office data configuration and security auditing for team collaboration.</p></div>
         </div>
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div class="card-content"><h3>System Integrity</h3><p>Surge protection audits and deep virus eradication to prevent costly downtime.</p></div>
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800" class="card-img">
+            <div class="card-content"><h3>System Integrity</h3><p>Surge protection audits and deep virus eradication for zero downtime.</p></div>
         </div>
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content"><h3>Specialized Tech</h3><p>Diagnostics for industrial sensors and specialized alignment machine computer units.</p></div>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800" class="card-img">
+            <div class="card-content"><h3>Specialized Tech</h3><p>Diagnostics for industrial sensors and specialized scanner computer units.</p></div>
         </div>
     </div>
 
-    <div class="log-section reveal" style="margin-top: 100px;">
-        <h2 style="text-align: center; color: var(--light-blue); letter-spacing: 2px;">FIELD LOG HIGHLIGHTS</h2>
+    <div class="log-section reveal">
+        <h2 style="text-align: center; color: var(--light-blue); letter-spacing: 2px; margin-bottom: 40px;">FIELD LOG HIGHLIGHTS</h2>
         <div class="log-grid">
             <div class="log-card"><h4>Touchline Industries Ltd.</h4><p>Network share deployment & hardware procurement.</p></div>
             <div class="log-card"><h4>Radiance Oral Care</h4><p>System cleaning & comprehensive hardware maintenance.</p></div>
@@ -181,7 +183,7 @@
 
     <div class="contact-hub reveal">
         <h2 style="color: var(--light-blue); letter-spacing: 2px;">COMMAND CENTER</h2>
-        <div class="address-highlight"><i class="fas fa-map-marker-alt"></i> 39 Grovedale Drive, Kingston 10, Jamaica</div>
+        <div class="address-highlight"><i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10, Jamaica</div>
         
         <div class="hub-list">
             <a href="tel:+18763833293" class="hub-row"><i class="fas fa-phone-alt"></i><span class="label">Primary</span><span class="detail">876-383-3293</span></a>
@@ -202,9 +204,41 @@
     </div>
 </div>
 
-<footer><p>&copy; 2026 (K.A.T.S) K. ALLEN TECH SERVICES | KINGSTON, JAMAICA</p></footer>
+<footer><p>&copy; 2026 K. ALLEN TECH SERVICES | KINGSTON, JAMAICA</p></footer>
 
 <script>
+    // PARTICLE BACKGROUND SYSTEM
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = [];
+        for (let i = 0; i < 80; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+    }
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00d2ff';
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill();
+        });
+        requestAnimationFrame(animate);
+    }
+    window.addEventListener('resize', init);
+    init(); animate();
+
+    // SCROLL REVEAL & PROGRESS
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
         for (var i = 0; i < reveals.length; i++) {
@@ -216,11 +250,14 @@
     window.onscroll = function() {
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var scrolled = (winScroll / height) * 100;
-        document.getElementById("scroll-progress").style.width = scrolled + "%";
+        document.getElementById("scroll-progress").style.width = (winScroll / height) * 100 + "%";
         reveal();
     };
     reveal();
+
+    // HIDDEN HANDSHAKE
+    console.log("%c K.A.T.S. SYSTEM ACTIVE ", "color: #00ff88; background: #010409; font-size: 20px; font-weight: bold; border: 1px solid #00d2ff; padding: 5px;");
+    console.log("%cField Support: 876-383-3293 | Kingston, JM", "color: #00d2ff; font-weight: bold;");
 </script>
 </body>
 </html>
