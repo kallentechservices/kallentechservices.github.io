@@ -42,49 +42,57 @@
         .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
         .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
 
+        /* HEADER & PULSATING BADGE */
         header { padding: 80px 20px; text-align: center; }
+        .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 12px 25px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 25px; font-weight: bold; letter-spacing: 1px; }
+        .dot { width: 12px; height: 12px; background: var(--neon-green); border-radius: 50%; margin-right: 12px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 15px rgba(0, 255, 136, 0); } }
+        
         .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; box-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
         h1 { margin: 0; font-size: 2.8rem; font-weight: 900; letter-spacing: 4px; }
 
-        /* SERVICE TILES - ALL 5 RESTORED */
+        /* SERVICE TILES */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .card { 
             background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 20px; width: 330px; min-height: 420px; 
+            border-radius: 20px; width: 330px; min-height: 440px; 
             overflow: hidden; transition: all 0.4s ease; position: relative;
         }
         .card:hover { transform: scale(1.05) translateY(-10px); border-color: var(--neon-green); box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2); }
         .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 20px; }
-        .card-content h3 { margin: 0 0 10px 0; color: var(--light-blue); }
-        .card-content p { font-size: 0.95rem; line-height: 1.5; color: #ddd; }
+        .card-content h3 { margin: 0 0 10px 0; color: var(--light-blue); font-size: 1.3rem; }
+        .card-content p { font-size: 0.95rem; line-height: 1.6; color: #ddd; }
 
         /* HIGHLIGHTED ADDRESS */
         .address-highlight { 
             background: rgba(0, 255, 136, 0.1); border: 2px solid var(--neon-green); 
-            padding: 15px; border-radius: 15px; display: inline-block; 
-            margin-bottom: 30px; color: white; font-weight: bold; font-size: 1.2rem;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+            padding: 18px; border-radius: 15px; display: inline-block; 
+            margin-bottom: 35px; color: white; font-weight: 900; font-size: 1.3rem;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); letter-spacing: 1px;
         }
 
         /* FIELD LOGS */
         .log-section { margin-top: 80px; }
         .log-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .log-card { background: rgba(255,255,255,0.03); padding: 20px; border-left: 3px solid var(--neon-green); border-radius: 0 10px 10px 0; }
-        .log-card h4 { margin: 0 0 10px 0; color: var(--light-blue); }
+        .log-card { background: rgba(255,255,255,0.03); padding: 25px; border-left: 4px solid var(--neon-green); border-radius: 0 15px 15px 0; }
+        .log-card h4 { margin: 0 0 10px 0; color: var(--light-blue); font-size: 1.1rem; }
+        .log-card p { font-size: 0.9rem; color: #bbb; line-height: 1.5; margin: 0; }
 
         /* COMMAND CENTER */
-        .contact-hub { padding: 50px 20px; background: rgba(0, 210, 255, 0.03); border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; }
+        .contact-hub { padding: 60px 20px; background: rgba(0, 210, 255, 0.03); border-radius: 35px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; }
         .hub-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
         .hub-item { background: var(--glass); padding: 20px; border-radius: 12px; min-width: 280px; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.15); transform: translateY(-3px); }
         
-        .btn-glow { position: relative; display: inline-block; background: var(--light-blue); color: #020617; padding: 20px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; overflow: hidden; transition: 0.3s; }
+        .btn-glow { position: relative; display: inline-block; background: var(--light-blue); color: #020617; padding: 22px 65px; border-radius: 15px; text-decoration: none; font-weight: 900; overflow: hidden; transition: 0.3s; letter-spacing: 1px; }
+        .btn-glow:hover { background: white; box-shadow: 0 0 35px var(--light-blue); transform: scale(1.02); }
 
-        footer { text-align: center; padding: 60px 20px; color: #555; }
+        footer { text-align: center; padding: 60px 20px; color: #666; font-size: 0.9rem; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        @media (max-width: 600px) { .side-dock { display: none; } .card { width: 100%; min-height: auto; } }
+        @media (max-width: 600px) { .side-dock { display: none; } .card { width: 100%; min-height: auto; } .address-highlight { font-size: 1rem; width: 90%; } }
     </style>
 </head>
 <body>
@@ -102,7 +110,7 @@
     <div class="status-badge"><div class="dot"></div> K.A.T.S. FIELD LOGS UPDATED</div>
     <img src="logo.png" alt="K. Allen Tech" class="logo-img">
     <h1>K. ALLEN TECH</h1>
-    <p style="color: var(--light-blue); font-size: 1.1rem; margin-top: 10px; font-weight: bold;">Industrial Support • Hardware Maintenance • Precision Repair</p>
+    <p style="color: var(--light-blue); font-size: 1.15rem; margin-top: 10px; font-weight: bold;">Industrial Support • Hardware Maintenance • Precision Repair</p>
 </header>
 
 <div class="container">
@@ -111,35 +119,35 @@
             <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
             <div class="card-content">
                 <h3>Hardware & OS</h3>
-                <p>Windows 11 upgrades, deep system cleaning, and hardware sourcing. Expert specs tailored for office efficiency.</p>
+                <p>Windows 11 upgrades, deep system cleaning, and hardware sourcing. Expert specs tailored for business longevity and performance.</p>
             </div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
             <div class="card-content">
                 <h3>Printer Restoration</h3>
-                <p>Mechanical precision for ID card printers, receipt printers, and HP laser hardware. Deep cleaning and mechanical repair.</p>
+                <p>Comprehensive mechanical repair and cleaning for all major printer types, including thermal receipt, laser office units, and specialized ID printers.</p>
             </div>
         </div>
         <div class="card reveal">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc48?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" class="card-img">
             <div class="card-content">
                 <h3>Network Shares</h3>
-                <p>Configuration of shared network folders and system health checkups in high-traffic office environments.</p>
+                <p>Seamless configuration of shared network folders and routine system health audits in high-traffic commercial environments.</p>
             </div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
             <div class="card-content">
                 <h3>System Integrity</h3>
-                <p>Auditing surge protection protocols, virus eradication, and ensuring hardware is properly connected for stability.</p>
+                <p>Surge protection auditing, virus eradication protocols, and physical hardware checkups to ensure 24/7 stability.</p>
             </div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" class="card-img">
             <div class="card-content">
                 <h3>Specialized Tech</h3>
-                <p>Technical support for specialized industrial machines, including alignment system computers and external scanning sensors.</p>
+                <p>Expert support for industrial-grade systems, scanning sensors, and the critical computer units that power alignment machinery.</p>
             </div>
         </div>
     </div>
@@ -149,23 +157,23 @@
         <div class="log-grid">
             <div class="log-card">
                 <h4>Touchline Industries Ltd.</h4>
-                <p>Hardware procurement and network share configuration. Sourced future-proof Amazon hardware based on specific office requirements.</p>
+                <p>Hardware procurement and network share configuration. Sourced future-proof hardware based on specific office requirements.</p>
             </div>
             <div class="log-card">
                 <h4>Radiance Oral Care</h4>
-                <p>Hardware maintenance, laptop upgrades, and system cleaning. Sourced high-performance mobile units for dental operations.</p>
+                <p>Ongoing maintenance, system cleaning, and performance upgrades for dental office mobile units and desktop systems.</p>
             </div>
             <div class="log-card">
                 <h4>Precision Alignment Ltd.</h4>
-                <p>Servicing alignment machine computers and specialized scanning sensors. Performed Windows 11 upgrades and printer restoration.</p>
+                <p>Technical servicing for alignment machines and scanning sensors. Executed Windows 11 upgrades and receipt printer restoration.</p>
             </div>
             <div class="log-card">
                 <h4>ABTAX Limited</h4>
-                <p>Fleet-wide system cleaning, Windows 11 upgrades, and surge protection audits. Managed network shared folder access.</p>
+                <p>System cleaning, Windows 11 fleet upgrades, and surge protection audits. Managed internal network shared folder access.</p>
             </div>
             <div class="log-card">
                 <h4>Sagility Jamaica</h4>
-                <p>Provided critical diagnostics and servicing for high-volume ID card printing hardware.</p>
+                <p>Critical diagnostics and precision servicing for high-volume, specialized ID card printing hardware.</p>
             </div>
         </div>
     </div>
