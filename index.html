@@ -11,10 +11,15 @@
       "logo": "https://k-allen-tech.github.io/logo.png",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "39 Grovedale Drive",
+        "streetAddress": "Grovedale Drive",
         "addressLocality": "Kingston",
         "addressRegion": "St. Andrew",
         "addressCountry": "JM"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-876-383-3293",
+        "contactType": "customer service"
       }
     }
     </script>
@@ -41,44 +46,50 @@
             --dark-bg: #010409; 
             --light-blue: #00d2ff; 
             --neon-green: #00ff88; 
-            --card-glass: rgba(13, 17, 23, 0.7); 
+            --card-glass: rgba(13, 17, 23, 0.8); 
             --card-hover: rgba(22, 27, 34, 1);
         }
 
-        /* DYNAMIC BACKGROUND (Non-Glitchy) */
         body { 
             margin: 0; padding: 0; background-color: var(--dark-bg);
-            color: #ffffff; font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #ffffff; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
             background-image: 
                 radial-gradient(circle at 0% 0%, rgba(0, 210, 255, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 100% 100%, rgba(0, 255, 136, 0.05) 0%, transparent 40%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
         }
 
-        /* Subtle "Flow" Animation on Header */
-        header::after {
-            content: ""; position: absolute; top: 0; left: -100%; width: 200%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--light-blue), transparent);
-            animation: flow 4s linear infinite;
+        /* SCANNING ANIMATION FOR LOGO */
+        .logo-container { position: relative; display: inline-block; }
+        .logo-img { width: 120px; border-radius: 50%; border: 3px solid var(--light-blue); background: white; z-index: 2; position: relative; }
+        .scan-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--neon-green); box-shadow: 0 0 15px var(--neon-green);
+            z-index: 3; animation: scan 3s linear infinite; border-radius: 2px; opacity: 0.7;
         }
-        @keyframes flow { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes scan { 
+            0% { top: 0; opacity: 0; } 
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; } 
+        }
 
-        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--light-blue), var(--neon-green)); z-index: 100001; width: 0%; transition: width 0.1s; }
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--light-blue), var(--neon-green)); z-index: 100001; width: 0%; }
 
         .side-dock { position: fixed; left: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100000; }
         .side-tile { width: 48px; height: 48px; background: rgba(13, 17, 23, 0.9); border: 1px solid var(--light-blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; font-size: 22px; backdrop-filter: blur(10px); }
         .side-tile i { color: white !important; }
         .side-tile:hover { transform: scale(1.1) translateX(10px); border-color: var(--neon-green); box-shadow: 0 0 15px var(--light-blue); }
 
-        header { padding: 100px 20px; text-align: center; position: relative; overflow: hidden; }
+        header { padding: 100px 20px; text-align: center; }
         .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 25px; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
         .dot { width: 8px; height: 8px; background: var(--neon-green); border-radius: 50%; margin-right: 10px; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.6); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } }
         
-        .logo-img { width: 120px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; box-shadow: 0 0 20px rgba(0,210,255,0.2); }
-        h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
+        h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; color: #fff; text-shadow: 0 0 20px rgba(0,210,255,0.3); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
@@ -86,17 +97,17 @@
         .card { 
             background: var(--card-glass); border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 20px; width: 340px; min-height: 420px; overflow: hidden; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(12px);
         }
         .card:hover { 
             background: var(--card-hover); border-color: var(--light-blue); 
-            transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0,0,0,0.8);
         }
         .card-img { width: 100%; height: 190px; object-fit: cover; opacity: 0.8; transition: 0.4s; }
         .card:hover .card-img { opacity: 1; transform: scale(1.05); }
         .card-content { padding: 25px; }
         .card-content h3 { color: var(--light-blue); margin: 0 0 12px 0; font-size: 1.6rem; font-weight: 800; }
-        .card-content p { color: #d1d5db; line-height: 1.6; font-size: 1rem; }
+        .card-content p { color: #fff; line-height: 1.6; font-size: 1rem; }
 
         .log-section h2 { color: var(--light-blue); text-align: center; margin-bottom: 40px; font-weight: 900; letter-spacing: 2px; }
         .log-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
@@ -106,14 +117,14 @@
             transition: 0.3s;
         }
         .log-card h4 { color: #fff; margin: 0 0 5px 0; font-size: 1.1rem; }
-        .log-card p { color: #9ca3af; margin: 0; font-size: 0.95rem; }
+        .log-card p { color: #ccc; margin: 0; font-size: 0.95rem; }
         .log-card:hover { background: rgba(255,255,255,0.1); transform: translateX(10px); color: #fff; }
 
-        .contact-hub { padding: 80px 20px; background: linear-gradient(145deg, rgba(13,17,23,0.9), rgba(1,4,9,1)); border-radius: 40px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; margin-top: 100px; }
+        .contact-hub { padding: 80px 20px; background: rgba(13, 17, 23, 0.9); border-radius: 40px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; margin-top: 100px; }
         .address-highlight { 
             background: rgba(0, 255, 136, 0.1); border: 2px solid var(--neon-green); 
             padding: 15px 30px; border-radius: 15px; display: inline-block; 
-            margin-bottom: 40px; color: #fff; font-weight: 900; text-transform: uppercase;
+            margin-bottom: 40px; color: #fff; font-weight: 900;
         }
 
         .hub-list { max-width: 600px; margin: 0 auto 50px auto; display: flex; flex-direction: column; gap: 12px; }
@@ -123,27 +134,25 @@
             display: flex; align-items: center; gap: 20px; transition: 0.3s;
         }
         .hub-row i { color: var(--light-blue); font-size: 1.3rem; }
-        .hub-row .label { color: var(--neon-green); font-size: 0.7rem; font-weight: 900; border: 1px solid var(--neon-green); padding: 3px 10px; border-radius: 6px; text-transform: uppercase; }
+        .hub-row .label { color: var(--neon-green); font-size: 0.7rem; font-weight: 900; border: 1px solid var(--neon-green); padding: 3px 10px; border-radius: 6px; }
         .hub-row span.detail { font-size: 1.1rem; font-family: 'Courier New', monospace; font-weight: bold; }
         .hub-row:hover { border-color: var(--light-blue); background: rgba(255,255,255,0.12); transform: scale(1.02); }
 
-        .btn-glow { background: var(--light-blue); color: #000; padding: 22px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; font-size: 1.2rem; transition: 0.3s; display: inline-block; box-shadow: 0 0 20px rgba(0,210,255,0.3); }
-        .btn-glow:hover { box-shadow: 0 0 40px var(--light-blue); transform: scale(1.05); background: #fff; }
+        .btn-glow { background: var(--light-blue); color: #000; padding: 22px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; font-size: 1.2rem; transition: 0.3s; display: inline-block; }
+        .btn-glow:hover { box-shadow: 0 0 40px var(--light-blue); transform: scale(1.05); }
 
         .footer-socials { margin-top: 50px; display: flex; justify-content: center; gap: 30px; }
-        .footer-socials a { color: #4b5563; font-size: 2.2rem; transition: 0.3s; }
+        .footer-socials a { color: #555; font-size: 2.2rem; transition: 0.3s; }
         .footer-socials a:hover { color: var(--light-blue); transform: translateY(-5px); }
 
-        footer { text-align: center; padding: 80px 20px; color: #374151; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { text-align: center; padding: 80px 20px; color: #444; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 600px) {
             h1 { font-size: 2.4rem; }
-            header { padding: 60px 20px; }
             .card { width: 100%; }
-            .hub-row span.detail { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -160,7 +169,10 @@
 
 <header>
     <div class="status-badge"><div class="dot"></div> FIELD SYSTEMS ACTIVE</div>
-    <img src="logo.png" alt="K. Allen Tech" class="logo-img">
+    <div class="logo-container">
+        <div class="scan-line"></div>
+        <img src="logo.png" alt="K. Allen Tech" class="logo-img">
+    </div>
     <h1>K. ALLEN TECH</h1>
     <p style="color: var(--light-blue); font-weight: 900; letter-spacing: 2px; margin-top: 15px;">INDUSTRIAL SUPPORT • PRECISION HARDWARE REPAIR</p>
 </header>
@@ -201,8 +213,8 @@
     </div>
 
     <div class="contact-hub reveal">
-        <h2 style="letter-spacing: 2px; margin-bottom: 20px; color: var(--light-blue);">COMMAND CENTER</h2>
-        <div class="address-highlight"><i class="fas fa-map-marker-alt"></i> 39 Grovedale Drive, Kingston 10, Jamaica</div>
+        <h2 style="letter-spacing: 2px; color: var(--light-blue);">COMMAND CENTER</h2>
+        <div class="address-highlight"><i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10, Jamaica</div>
         
         <div class="hub-list">
             <a href="tel:+18763833293" class="hub-row"><i class="fas fa-phone-alt"></i><span class="label">Primary</span><span class="detail">876-383-3293</span></a>
