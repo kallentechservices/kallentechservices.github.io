@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K. Allen Tech Services | Kingston, Jamaica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --dark-blue: #0a192f; --light-blue: #00d2ff; --text-gray: #8892b0; --card-bg: #112240; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--dark-blue); color: white; line-height: 1.6; margin: 0; }
+        header { padding: 80px 20px; text-align: center; background: linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-position: center; border-bottom: 3px solid var(--light-blue); }
+        .logo-img { width: 140px; border-radius: 50%; border: 4px solid var(--light-blue); margin-bottom: 20px; background: white; box-shadow: 0 0 25px rgba(0, 210, 255, 0.4); }
+        .logo-text { font-size: 2.8rem; font-weight: bold; color: white; letter-spacing: 2px; margin: 10px 0; text-transform: uppercase; }
+        .tagline { color: var(--light-blue); font-size: 1.3rem; font-style: italic; margin-bottom: 0; }
+        .container { max-width: 1100px; margin: auto; padding: 50px 20px; }
+        h2 { border-left: 5px solid var(--light-blue); padding-left: 15px; margin-bottom: 30px; font-size: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { border: 1px solid #233554; border-radius: 12px; background: var(--card-bg); transition: 0.3s; overflow: hidden; display: flex; flex-direction: column; }
+        .card:hover { border-color: var(--light-blue); transform: translateY(-8px); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid var(--light-blue); }
+        .card-content { padding: 25px; }
+        .card h3 { color: var(--light-blue); margin-top: 0; font-size: 1.4rem; }
+        .btn { display: inline-block; background: transparent; border: 2px solid var(--light-blue); color: var(--light-blue); padding: 14px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 25px; transition: 0.3s; font-size: 1.1rem; }
+        .btn:hover { background: var(--light-blue); color: var(--dark-blue); }
+        .about-section { margin-top: 60px; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 12px; border-left: 5px solid var(--light-blue); }
+        .contact-section { background: var(--card-bg); padding: 50px; border-radius: 15px; margin-top: 60px; text-align: center; border: 1px solid #233554; }
+        .phone { font-size: 1.8rem; color: var(--light-blue); display: block; margin: 15px 0; font-weight: bold; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        footer { text-align: center; padding: 50px; color: var(--text-gray); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/18763833293" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<header>
+    <img src="logo.png" alt="K. Allen Tech Logo" class="logo-img">
+    <div class="logo-text">K. ALLEN TECH SERVICES</div>
+    <p class="tagline">Father & Son: Trusted tech repair, honest advice.</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>Professional Solutions</h2>
+        <p style="font-size: 1.1rem;">Decades of practical experience meeting the tech needs of Kingston.</p>
+    </section>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" alt="Internal Computer Hardware" class="card-img">
+            <div class="card-content">
+                <h3>💻 Computer Repair</h3>
+                <p>Hardware diagnostics, motherboard repairs, component upgrades, and custom PC optimization.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" alt="Printer Internals Repair" class="card-img">
+            <div class="card-content">
+                <h3>🖨️ Printer Maintenance</h3>
+                <p>Expert servicing for laser and inkjet printers. We fix jams, fuser issues, and connectivity errors.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Digital Cybersecurity Shield" class="card-img">
+            <div class="card-content">
+                <h3>🛡️ Virus & Security</h3>
+                <p>Complete removal of malware and ransomware. We secure your devices to protect your personal data.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" alt="Precision Smartphone Repair" class="card-img">
+            <div class="card-content">
+                <h3>📱 Phone & Device Support</h3>
+                <p>Precision hardware repairs, screen replacements, and software flashing for all smart devices.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" alt="Business Tech Strategy" class="card-img">
+            <div class="card-content">
+                <h3>📊 Tech Consulting</h3>
+                <p>Guidance on technology infrastructure and purchasing decisions to save your business time and money.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <h2>The Father & Son Story</h2>
+        <p><strong>K. Allen Tech Services</strong> is built on family and trust. Based in Kingston, we combine decades of hardware mastery with modern software expertise.</p>
+        <p>When you call us, you aren't talking to a call center—you're talking to a team that cares about the community. Honest advice, fair prices, and repairs that last.</p>
+    </section>
+
+    <div class="contact-section">
+        <h2>Ready for a Quote?</h2>
+        <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn">OPEN BOOKING FORM</a>
+        <div style="margin-top: 30px;">
+            <span class="phone">📞 876-383-3293</span>
+            <span class="phone">📞 876-379-1037</span>
+        </div>
+    </div>
+</div>
+
+<footer>&copy; 2026 K. Allen Tech Services | Kingston, Jamaica</footer>
+
+</body>
+</html>
