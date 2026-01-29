@@ -41,17 +41,17 @@
             overflow-x: hidden; -webkit-tap-highlight-color: transparent;
         }
 
-        /* SIDEBAR NAVIGATION */
+        /* SIDEBAR NAVIGATION - FIXED FOR MOBILE */
         .side-dock { position: fixed; left: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100000; }
         .side-tile { width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275); font-size: 22px; backdrop-filter: blur(10px); }
         .side-tile i { color: white !important; }
         .side-tile:hover, .side-tile:active { transform: scale(1.2) translateX(12px); border-color: transparent; }
+        
         .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
         .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
         .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
         .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
 
-        /* HEADER & PULSATING STATUS */
         header { padding: 80px 20px; text-align: center; }
         .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 12px 25px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 25px; font-weight: bold; letter-spacing: 1px; }
         .dot { width: 12px; height: 12px; background: var(--neon-green); border-radius: 50%; margin-right: 12px; animation: pulse 2s infinite; }
@@ -60,7 +60,6 @@
         .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; box-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
         h1 { margin: 0; font-size: 2.8rem; font-weight: 900; letter-spacing: 4px; }
 
-        /* SERVICE TILES */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .card { 
@@ -72,9 +71,7 @@
         .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 20px; }
         .card-content h3 { margin: 0 0 10px 0; color: var(--light-blue); font-size: 1.3rem; }
-        .card-content p { font-size: 0.95rem; line-height: 1.6; color: #ddd; }
 
-        /* NEON ADDRESS HIGHLIGHT */
         .address-highlight { 
             background: rgba(0, 255, 136, 0.1); border: 2px solid var(--neon-green); 
             padding: 18px; border-radius: 15px; display: inline-block; 
@@ -82,26 +79,31 @@
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); letter-spacing: 1px;
         }
 
-        /* FIELD LOGS */
-        .log-section { margin-top: 80px; }
         .log-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
         .log-card { background: rgba(255,255,255,0.03); padding: 25px; border-left: 4px solid var(--neon-green); border-radius: 0 15px 15px 0; }
-        .log-card h4 { margin: 0 0 5px 0; color: var(--light-blue); font-size: 1.1rem; }
-        .log-card p { font-size: 0.9rem; color: #bbb; line-height: 1.5; margin: 0; }
-
-        /* COMMAND CENTER */
+        
         .contact-hub { padding: 60px 20px; background: rgba(0, 210, 255, 0.03); border-radius: 35px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; }
         .hub-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
         .hub-item { background: var(--glass); padding: 20px; border-radius: 12px; min-width: 280px; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.15); transform: translateY(-3px); }
         
         .btn-glow { position: relative; display: inline-block; background: var(--light-blue); color: #020617; padding: 22px 65px; border-radius: 15px; text-decoration: none; font-weight: 900; overflow: hidden; transition: 0.3s; letter-spacing: 1px; }
-        .btn-glow:hover { background: white; box-shadow: 0 0 35px var(--light-blue); transform: scale(1.02); }
 
+        /* FOOTER SOCIALS RESTORED */
+        .footer-socials { margin-top: 30px; display: flex; justify-content: center; gap: 25px; }
+        .footer-socials a { color: #888; font-size: 1.8rem; transition: 0.3s; }
+        .footer-socials a:hover { color: var(--light-blue); transform: translateY(-5px); }
         footer { text-align: center; padding: 60px 20px; color: #666; font-size: 0.9rem; }
+
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        @media (max-width: 600px) { .side-dock { display: none; } .card { width: 100%; min-height: auto; } .address-highlight { font-size: 1rem; width: 90%; } }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 600px) { 
+            .side-dock { left: 5px; transform: scale(0.8) translateY(-50%); } /* Keep visible but smaller */
+            .card { width: 100%; min-height: auto; } 
+            .address-highlight { font-size: 1rem; width: 90%; } 
+            h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -126,81 +128,52 @@
     <div class="services-grid">
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content">
-                <h3>Hardware & OS</h3>
-                <p>Windows 11 upgrades, deep system cleaning, and hardware sourcing. Expert specs tailored for business longevity and performance.</p>
-            </div>
+            <div class="card-content"><h3>Hardware & OS</h3><p>Windows 11 upgrades, deep system cleaning, and hardware sourcing.</p></div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div class="card-content">
-                <h3>Printer Restoration</h3>
-                <p>Comprehensive mechanical repair and cleaning for all major printer types, including thermal receipt, laser office units, and specialized ID printers.</p>
-            </div>
+            <div class="card-content"><h3>Printer Restoration</h3><p>Mechanical repair for thermal receipt, laser office units, and ID printers.</p></div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content">
-                <h3>Network Shares</h3>
-                <p>Seamless configuration of shared network folders and routine system health audits in high-traffic commercial environments.</p>
-            </div>
+            <div class="card-content"><h3>Network Shares</h3><p>Seamless configuration of shared network folders and routine system health audits.</p></div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div class="card-content">
-                <h3>System Integrity</h3>
-                <p>Surge protection auditing, virus eradication protocols, and physical hardware checkups to ensure 24/7 stability.</p>
-            </div>
+            <div class="card-content"><h3>System Integrity</h3><p>Surge protection auditing, virus eradication, and hardware checkups.</p></div>
         </div>
         <div class="card reveal">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div class="card-content">
-                <h3>Specialized Tech</h3>
-                <p>Expert support for industrial-grade systems, scanning sensors, and the critical computer units that power alignment machinery.</p>
-            </div>
+            <div class="card-content"><h3>Specialized Tech</h3><p>Expert support for industrial-grade systems and alignment machinery computers.</p></div>
         </div>
     </div>
 
     <div class="log-section reveal">
         <h2 style="text-align: center; letter-spacing: 2px;"><i class="fas fa-microchip"></i> SERVICE RECORD HIGHLIGHTS</h2>
         <div class="log-grid">
-            <div class="log-card">
-                <h4>Touchline Industries Ltd.</h4>
-                <p>Hardware procurement and network share configuration. Sourced future-proof hardware based on specific office requirements.</p>
-            </div>
-            <div class="log-card">
-                <h4>Radiance Oral Care</h4>
-                <p>Ongoing maintenance, system cleaning, and performance upgrades for dental office mobile units and desktop systems.</p>
-            </div>
-            <div class="log-card">
-                <h4>Precision Alignment Ltd.</h4>
-                <p>Technical servicing for alignment machines and scanning sensors. Executed Windows 11 upgrades and receipt printer restoration.</p>
-            </div>
-            <div class="log-card">
-                <h4>ABTAX Limited</h4>
-                <p>System cleaning, Windows 11 fleet upgrades, and surge protection audits. Managed internal network shared folder access.</p>
-            </div>
-            <div class="log-card">
-                <h4>Sagility Jamaica</h4>
-                <p>Critical diagnostics and precision servicing for high-volume, specialized ID card printing hardware.</p>
-            </div>
+            <div class="log-card"><h4>Touchline Industries Ltd.</h4><p>Hardware procurement and network share configuration.</p></div>
+            <div class="log-card"><h4>Radiance Oral Care</h4><p>Hardware maintenance, laptop upgrades, and system cleaning.</p></div>
+            <div class="log-card"><h4>Precision Alignment Ltd.</h4><p>Servicing alignment machine computers and specialized scanning sensors.</p></div>
+            <div class="log-card"><h4>ABTAX Limited</h4><p>System cleaning, Windows 11 upgrades, and surge protection audits.</p></div>
+            <div class="log-card"><h4>Sagility Jamaica</h4><p>Diagnostics and servicing for specialized ID card printing hardware.</p></div>
         </div>
     </div>
 
     <div class="contact-hub reveal" style="margin-top: 80px;">
         <h2 style="letter-spacing: 2px;"><i class="fas fa-terminal"></i> COMMAND CENTER</h2>
-        <div class="address-highlight">
-            <i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10, Jamaica
-        </div>
+        <div class="address-highlight"><i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10, Jamaica</div>
         <div class="hub-grid">
             <a href="tel:+18763833293" class="hub-item"><i class="fas fa-phone-alt"></i><span>876-383-3293</span></a>
             <a href="tel:+18763791037" class="hub-item"><i class="fas fa-phone"></i><span>876-379-1037</span></a>
             <a href="mailto:k.allentechrepair@gmail.com" class="hub-item"><i class="fas fa-envelope"></i><span>k.allentechrepair@gmail.com</span></a>
-            <a href="mailto:kdahc42@gmail.com" class="hub-item"><i class="fas fa-envelope-open"></i><span>kdahc42@gmail.com</span></a>
-            <a href="mailto:marquino.allen16@gmail.com" class="hub-item"><i class="fas fa-paper-plane"></i><span>marquino.allen16@gmail.com</span></a>
         </div>
-        <div class="booking-zone">
-            <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow" target="_blank">INITIATE REPAIR TICKET</a>
+        <div class="booking-zone"><a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow" target="_blank">INITIATE REPAIR TICKET</a></div>
+        
+        <div class="footer-socials">
+            <a href="https://wa.me/18763833293" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/174szanVGW/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/k.allentechrepair/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/k-allen-tech-services/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </div>
