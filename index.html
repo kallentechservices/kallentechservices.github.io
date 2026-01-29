@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K. Allen Tech Services | Kingston, Jamaica</title>
+    
+    <meta property="og:title" content="K. Allen Tech Services">
+    <meta property="og:description" content="Father & Son: Trusted Tech Repair & Consulting in Kingston, Jamaica.">
+    <meta property="og:image" content="https://kallentechrepair-coder.github.io/logo.png">
+    <meta property="og:url" content="https://kallentechrepair-coder.github.io/">
+    <meta property="og:type" content="website">
+
     <link rel="icon" type="image/png" href="logo.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --dark-blue: #0a192f; --light-blue: #00d2ff; --text-gray: #8892b0; --card-bg: #112240; }
-        
-        /* Force the page to be full height and allow scrolling */
         html, body { min-height: 100%; margin: 0; padding: 0; background-color: var(--dark-blue); color: white; font-family: 'Segoe UI', sans-serif; }
         * { box-sizing: border-box; }
 
-        /* HEADER: Forced Center Stack */
         header { 
             width: 100%;
             padding: 60px 20px;
@@ -25,9 +30,8 @@
             background-position: center;
         }
 
-        /* FIXED: Status Badge Centering */
         .status-badge {
-            display: inline-block; /* Changed from flex to block-inline for stability */
+            display: inline-block;
             background: rgba(0, 255, 136, 0.1);
             color: #00ff88;
             padding: 8px 20px;
@@ -48,21 +52,14 @@
         .logo-img { 
             display: block; 
             width: 140px; 
-            margin: 0 auto 20px auto; /* Perfect centering */
+            margin: 0 auto 20px auto;
             border-radius: 50%; 
             border: 4px solid var(--light-blue); 
             background: white; 
         }
 
-        /* CONTAINER: No height restrictions */
-        .container { 
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-        /* GRID FIX: Forces wrapping and ensures all 5 items are rendered */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -84,7 +81,6 @@
         .card-content { padding: 25px; flex-grow: 1; }
         .card h3 { color: var(--light-blue); margin-top: 0; }
 
-        /* CONTACT DASHBOARD */
         .contact-section { 
             background: rgba(17, 34, 64, 0.8); 
             padding: 40px 20px; 
