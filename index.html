@@ -7,68 +7,126 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --dark-blue: #0a192f; --light-blue: #00d2ff; --text-gray: #8892b0; --card-bg: #112240; --accent-glow: rgba(0, 210, 255, 0.3); }
+        :root { --dark-blue: #0a192f; --light-blue: #00d2ff; --text-gray: #8892b0; --card-bg: #112240; }
         
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--dark-blue); color: white; line-height: 1.6; margin: 0; padding: 0; width: 100%; overflow-x: hidden; }
+        /* Force the page to be full height and allow scrolling */
+        html, body { min-height: 100%; margin: 0; padding: 0; background-color: var(--dark-blue); color: white; font-family: 'Segoe UI', sans-serif; }
+        * { box-sizing: border-box; }
 
-        /* HEADER ALIGNMENT FIX */
+        /* HEADER: Forced Center Stack */
         header { 
-            padding: 60px 20px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            padding: 60px 20px;
             text-align: center;
+            border-bottom: 2px solid var(--light-blue);
             background: linear-gradient(rgba(10,25,47,0.9), rgba(10,25,47,0.9)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
-            border-bottom: 2px solid var(--light-blue);
         }
 
+        /* FIXED: Status Badge Centering */
         .status-badge {
-            display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1);
-            color: #00ff88; padding: 8px 20px; border-radius: 30px; font-size: 0.85rem;
-            font-weight: bold; margin-bottom: 20px; border: 1px solid #00ff88;
+            display: inline-block; /* Changed from flex to block-inline for stability */
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #00ff88;
+            margin: 0 auto 20px auto;
         }
-        .pulse { width: 10px; height: 10px; background: #00ff88; border-radius: 50%; margin-right: 10px; animation: pulse-animation 2s infinite; }
+        .pulse { 
+            display: inline-block;
+            width: 10px; height: 10px; background: #00ff88; 
+            border-radius: 50%; margin-right: 8px; 
+            animation: pulse-animation 2s infinite; 
+        }
         @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); } }
 
-        .logo-img { width: 140px; border-radius: 50%; border: 4px solid var(--light-blue); margin-bottom: 15px; background: white; transition: 0.5s; }
+        .logo-img { 
+            display: block; 
+            width: 140px; 
+            margin: 0 auto 20px auto; /* Perfect centering */
+            border-radius: 50%; 
+            border: 4px solid var(--light-blue); 
+            background: white; 
+        }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* FLEXBOX FIX: This forces all cards to stay visible and wrap to new lines */
-        .services-flex { 
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* CONTAINER: No height restrictions */
+        .container { 
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* GRID FIX: Forces wrapping and ensures all 5 items are rendered */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             width: 100%;
         }
-        
+
         .card { 
             background: var(--card-bg); 
             border: 1px solid #233554; 
             border-radius: 15px; 
-            width: 350px; /* Fixed width so they don't disappear */
-            flex-grow: 1;
-            max-width: 400px;
-            overflow: hidden; 
-            transition: 0.4s;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: 0.3s;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--light-blue); box-shadow: 0 10px 30px var(--accent-glow); }
-        .card-img { width: 100%; height: 220px; object-fit: cover; }
+        .card:hover { border-color: var(--light-blue); transform: translateY(-5px); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card-content { padding: 25px; flex-grow: 1; }
+        .card h3 { color: var(--light-blue); margin-top: 0; }
 
-        .contact-dashboard { background: rgba(17, 34, 64, 0.5); border: 1px solid #233554; border-radius: 20px; padding: 30px; margin-top: 60px; width: 100%; box-sizing: border-box; }
-        .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
-        .contact-item { background: rgba(10, 25, 47, 0.8); padding: 15px 25px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid transparent; min-width: 250px; text-align: center; }
-        .contact-item:hover { border-color: var(--light-blue); }
+        /* CONTACT DASHBOARD */
+        .contact-section { 
+            background: rgba(17, 34, 64, 0.8); 
+            padding: 40px 20px; 
+            border-radius: 20px; 
+            margin-top: 50px; 
+            text-align: center;
+        }
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .contact-btn {
+            background: var(--dark-blue);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 1px solid #233554;
+            min-width: 280px;
+            transition: 0.3s;
+        }
+        .contact-btn:hover { border-color: var(--light-blue); background: var(--card-bg); }
+        .contact-btn i { color: var(--light-blue); margin-right: 10px; }
 
-        .btn { display: inline-block; background: var(--light-blue); color: var(--dark-blue); padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; margin-top: 20px; }
-        .whatsapp-float { position: fixed; width: 65px; height: 65px; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; text-decoration: none; }
+        .main-btn { 
+            display: inline-block; 
+            background: var(--light-blue); 
+            color: var(--dark-blue); 
+            padding: 18px 40px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .whatsapp-float { position: fixed; width: 65px; height: 65px; bottom: 30px; right: 30px; background-color: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1000; text-decoration: none; }
+
+        footer { text-align: center; padding: 60px 20px; color: var(--text-gray); }
     </style>
 </head>
 <body>
@@ -76,58 +134,50 @@
 <a href="https://wa.me/18763833293" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <header>
-    <div class="status-badge"><div class="pulse"></div> AVAILABLE FOR REPAIRS</div>
-    <img src="logo.png" alt="K. Allen Tech Logo" class="logo-img">
-    <h1 style="font-size: 3rem; margin: 0;">K. ALLEN TECH</h1>
-    <p style="font-size: 1.2rem; color: var(--light-blue); margin: 5px 0;">Father & Son: Trusted Tech Repair</p>
+    <div class="status-badge"><span class="pulse"></span>AVAILABLE FOR REPAIRS</div>
+    <img src="logo.png" alt="K. Allen Tech" class="logo-img">
+    <h1 style="margin: 0; font-size: 3rem; letter-spacing: 1px;">K. ALLEN TECH</h1>
+    <p style="color: var(--light-blue); font-size: 1.3rem; margin-top: 5px;">Father & Son: Trusted Tech Repair</p>
 </header>
 
 <div class="container">
-    <div class="services-flex">
+    <div class="services-grid">
         <div class="card">
             <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div style="padding: 20px;"><h3>💻 Computer Repair</h3><p>Motherboard diagnostics, hardware upgrades, and system cleaning.</p></div>
+            <div class="card-content"><h3>💻 Computer Repair</h3><p>Motherboard diagnostics, hardware upgrades, and system cleaning.</p></div>
         </div>
-
         <div class="card">
             <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 20px;"><h3>🖨️ Printer Servicing</h3><p>Maintenance for Laser and Inkjet. Jams, fusers, and roller repairs.</p></div>
+            <div class="card-content"><h3>🖨️ Printer Servicing</h3><p>Maintenance for Laser and Inkjet units. Clearing jams and mechanical fixes.</p></div>
         </div>
-
         <div class="card">
             <img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img">
-            <div style="padding: 20px;"><h3>📱 Phone Support</h3><p>Screen replacements, battery swaps, and software flashing.</p></div>
+            <div class="card-content"><h3>📱 Phone Support</h3><p>Screen replacements, battery swaps, and software flashing.</p></div>
         </div>
-
         <div class="card">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 20px;"><h3>🛡️ Virus & Security</h3><p>Ransomware removal and proactive protection for your data.</p></div>
+            <div class="card-content"><h3>🛡️ Virus & Security</h3><p>Malware removal and proactive data protection for your home or office.</p></div>
         </div>
-
         <div class="card">
             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img">
-            <div style="padding: 20px;"><h3>📊 Tech Consulting</h3><p>Business IT strategy and infrastructure planning in Kingston.</p></div>
+            <div class="card-content"><h3>📊 Tech Consulting</h3><p>Business IT strategy and infrastructure planning services.</p></div>
         </div>
     </div>
 
-    <div class="contact-dashboard">
-        <h2 style="text-align: center; color: var(--light-blue); margin: 0;">Contact Us</h2>
-        <div class="contact-grid">
-            <a href="tel:+18763833293" class="contact-item"><i class="fas fa-phone"></i> 876-383-3293</a>
-            <a href="tel:+18763791037" class="contact-item"><i class="fas fa-phone-alt"></i> 876-379-1037</a>
-            <a href="mailto:k.allentechrepair@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> k.allentechrepair@gmail.com</a>
-            <a href="mailto:kdahc42@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> kdahc42@gmail.com</a>
-            <a href="mailto:marquino.allen16@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> marquino.allen16@gmail.com</a>
+    <div class="contact-section">
+        <h2 style="color: var(--light-blue); margin: 0;">Direct Contact</h2>
+        <div class="contact-links">
+            <a href="tel:+18763833293" class="contact-btn"><i class="fas fa-phone"></i> 876-383-3293</a>
+            <a href="tel:+18763791037" class="contact-btn"><i class="fas fa-phone-alt"></i> 876-379-1037</a>
+            <a href="mailto:k.allentechrepair@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> k.allentechrepair@gmail.com</a>
+            <a href="mailto:kdahc42@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> kdahc42@gmail.com</a>
+            <a href="mailto:marquino.allen16@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> marquino.allen16@gmail.com</a>
         </div>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn">BOOK A REPAIR</a>
-        </div>
+        <a href="https://forms.gle/rURbycEBsTP77bRE8" class="main-btn">BOOK A REPAIR NOW</a>
     </div>
 </div>
 
-<footer style="text-align: center; padding: 40px; color: var(--text-gray);">
-    <p>&copy; 2026 K. Allen Tech Services | Kingston, Jamaica</p>
-</footer>
+<footer>&copy; 2026 K. Allen Tech Services | Kingston, Jamaica</footer>
 
 </body>
 </html>
