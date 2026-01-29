@@ -27,9 +27,10 @@
             background-attachment: fixed; background-size: cover;
             color: white; font-family: 'Segoe UI', sans-serif;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent; /* Removes the ugly blue box on Android tap */
         }
 
-        /* SIDEBAR FIX: STABLE ZOOM + COLORS */
+        /* SIDEBAR: WORKS ON HOVER (PC) AND TAP (MOBILE) */
         .side-dock {
             position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 10px; z-index: 100000;
@@ -37,86 +38,54 @@
         .side-tile {
             width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue);
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            color: white; text-decoration: none; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            color: white !important; /* FORCES ICON TO STAY WHITE */
+            text-decoration: none; transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             font-size: 22px; backdrop-filter: blur(5px);
         }
-        .side-tile i { transition: 0.2s; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        /* THE "RIGHT-SLIDE" + ZOOM + COLORS */
-        .side-tile:hover { transform: scale(1.2) translateX(12px); color: #fff; border-color: transparent; }
+        /* PC Hover & Mobile Tap States */
+        .side-tile:hover, .side-tile:active { transform: scale(1.2) translateX(12px); border-color: transparent; }
         
-        .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
-        .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
-        .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
-        .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
+        .wa-tile:hover, .wa-tile:active { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
+        .fb-tile:hover, .fb-tile:active { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
+        .ig-tile:hover, .ig-tile:active { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
+        .li-tile:hover, .li-tile:active { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
 
-        /* NEON PULSE STATUS */
-        .status-badge {
-            display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); 
-            color: var(--neon-green); padding: 12px 25px; border-radius: 50px; 
-            border: 1px solid var(--neon-green); margin-bottom: 20px; font-weight: bold;
+        /* SERVICE TILES: FORCED ZOOM FIX */
+        .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; perspective: 1000px; }
+        .card { 
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 20px; width: 330px; overflow: hidden; 
+            transition: all 0.5s ease !important; /* Vital for the zoom */
+            position: relative; will-change: transform;
         }
+        
+        /* This works on tap for Android too */
+        .card:hover, .card:active { 
+            transform: scale(1.1) translateY(-10px) !important; 
+            border-color: var(--neon-green) !important; 
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3) !important;
+            z-index: 999;
+        }
+
+        /* REST OF THE STYLING */
+        .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 12px 25px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 20px; font-weight: bold; }
         .dot { width: 12px; height: 12px; background: var(--neon-green); border-radius: 50%; margin-right: 12px; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 15px rgba(0, 255, 136, 0); } }
-
         header { padding: 60px 20px; text-align: center; }
         .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
-        /* SERVICE CARDS: THE ZOOM IS BACK */
-        .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
-        .card { 
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 20px; width: 330px; overflow: hidden; 
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        .card:hover { 
-            transform: scale(1.08) translateY(-10px); /* FORCED ZOOM */
-            border-color: var(--neon-green); 
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4); /* GREEN GLOW */
-            z-index: 10;
-        }
         .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 25px; }
-
-        /* COMMAND CENTER */
-        .contact-hub { 
-            margin-top: 60px; padding: 40px 20px; background: rgba(0, 210, 255, 0.05);
-            border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center;
-        }
+        .contact-hub { margin-top: 60px; padding: 40px 20px; background: rgba(0, 210, 255, 0.05); border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; }
         .hub-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
-        .hub-item {
-            background: var(--glass); padding: 15px; border-radius: 12px; min-width: 260px;
-            text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05);
-            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
-        }
-        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); transform: translateY(-5px); }
-
-        .btn-glow { 
-            display: inline-block; background: var(--light-blue); color: #020617; 
-            padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900;
-            transition: 0.3s;
-        }
-        .btn-glow:hover { background: white; box-shadow: 0 0 20px var(--light-blue); transform: scale(1.05); }
-
+        .hub-item { background: var(--glass); padding: 15px; border-radius: 12px; min-width: 260px; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .btn-glow { display: inline-block; background: var(--light-blue); color: #020617; padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900; }
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; }
         .footer-socials { margin-bottom: 20px; }
-        .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
-        .fa-whatsapp:hover { color: var(--whatsapp); }
-        .fa-facebook:hover { color: var(--facebook); }
-        .fa-instagram:hover { color: #dc2743; }
-        .fa-linkedin:hover { color: var(--linkedin); }
-
-        /* REVEAL ON SCROLL */
+        .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 600px) {
-            .side-dock { left: 5px; }
-            .side-tile { width: 40px; height: 40px; font-size: 18px; }
-        }
+        @media (max-width: 600px) { .side-dock { left: 5px; } .side-tile { width: 40px; height: 40px; font-size: 18px; } .card { width: 100%; } }
     </style>
 </head>
 <body>
@@ -135,26 +104,36 @@
     <p style="color: var(--light-blue); font-size: 1.2rem; margin-top: 10px; font-weight: bold;">Father & Son: Precision Engineering • Trusted Repairs</p>
 </header>
 
-<div class="container">
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
     <div class="services-grid">
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Computer Repair</h3><p>Board-level diagnostics and custom hardware solutions.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Printer Servicing</h3><p>Mechanical restoration and laser/inkjet maintenance.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Phone Support</h3><p>Screen precision repair and software optimization.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Virus & Security</h3><p>Total malware eradication and system hardening.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Tech Consulting</h3><p>Infrastructure design for small businesses.</p></div></div>
+        <div class="card reveal">
+            <img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img">
+            <div class="card-content"><h3>Computer Repair</h3><p>Board-level diagnostics and custom hardware solutions.</p></div>
+        </div>
+        <div class="card reveal">
+            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <div class="card-content"><h3>Printer Servicing</h3><p>Mechanical restoration and laser/inkjet maintenance.</p></div>
+        </div>
+        <div class="card reveal">
+            <img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img">
+            <div class="card-content"><h3>Phone Support</h3><p>Screen precision repair and software optimization.</p></div>
+        </div>
+        <div class="card reveal">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <div class="card-content"><h3>Virus & Security</h3><p>Total malware eradication and system hardening.</p></div>
+        </div>
+        <div class="card reveal">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img">
+            <div class="card-content"><h3>Tech Consulting</h3><p>Infrastructure design for small businesses.</p></div>
+        </div>
     </div>
 
     <div class="contact-hub reveal">
-        <div class="address-box">
-            <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--light-blue);"></i>
-            <h2 style="margin: 10px 0;">Grovedale Drive, Kingston 10</h2>
-        </div>
+        <h2 style="margin: 10px 0;"><i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10</h2>
         <div class="hub-grid">
             <a href="tel:+18763833293" class="hub-item"><i class="fas fa-phone-alt"></i><span>876-383-3293</span></a>
             <a href="tel:+18763791037" class="hub-item"><i class="fas fa-phone"></i><span>876-379-1037</span></a>
             <a href="mailto:k.allentechrepair@gmail.com" class="hub-item"><i class="fas fa-envelope"></i><span>k.allentechrepair@gmail.com</span></a>
-            <a href="mailto:kdahc42@gmail.com" class="hub-item"><i class="fas fa-envelope-open"></i><span>kdahc42@gmail.com</span></a>
-            <a href="mailto:marquino.allen16@gmail.com" class="hub-item"><i class="fas fa-paper-plane"></i><span>marquino.allen16@gmail.com</span></a>
         </div>
         <div class="booking-zone">
             <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow" target="_blank">INITIATE REPAIR TICKET</a>
