@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K. Allen Tech Services | Kingston, Jamaica</title>
     
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="K. Allen Tech Services">
+    <meta property="og:description" content="Father & Son: Trusted Tech Repair in Kingston 10. Computers, Printers, Phones & Security.">
+    <meta property="og:image" content="https://kallentechrepair-coder.github.io/logo.png">
+    <meta property="og:url" content="https://kallentechrepair-coder.github.io/">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
@@ -25,39 +34,19 @@
             color: white; font-family: 'Segoe UI', sans-serif;
         }
 
-        /* FIXED & FORCED FLOATING TILES */
+        /* FLOATING SIDEBAR (FORCE VISIBLE ON ALL DEVICES) */
         .side-dock {
-            position: fixed; 
-            left: 15px; 
-            top: 50%; 
-            transform: translateY(-50%);
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px; 
-            z-index: 10000; /* Highest priority */
+            position: fixed; left: 15px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 99999;
         }
         .side-tile {
-            width: 48px; 
-            height: 48px; 
-            background: var(--glass); 
-            border: 1px solid var(--light-blue);
-            border-radius: 10px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            color: white; 
-            text-decoration: none; 
-            transition: 0.3s; 
-            font-size: 20px;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+            width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; transition: 0.3s; font-size: 20px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
-        .side-tile:hover { 
-            transform: scale(1.1) translateX(5px); 
-            background: var(--light-blue); 
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px var(--light-blue);
-        }
-        .wa-tile:hover { background: #25d366 !important; border-color: #25d366 !important; box-shadow: 0 0 20px #25d366; }
+        .side-tile:hover { transform: scale(1.1) translateX(5px); background: var(--light-blue); color: var(--dark-bg); box-shadow: 0 0 25px var(--light-blue); }
+        .wa-tile:hover { background: #25d366 !important; border-color: #25d366 !important; box-shadow: 0 0 25px #25d366; }
 
         header { padding: 60px 20px; text-align: center; }
 
@@ -108,10 +97,9 @@
         footer { text-align: center; padding: 50px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         .footer-socials a { color: white; margin: 0 12px; font-size: 1.5rem; }
 
-        /* Ensure they don't block content on very small phones */
         @media (max-width: 480px) {
-            .side-dock { left: 5px; }
-            .side-tile { width: 40px; height: 40px; font-size: 18px; }
+            .side-dock { left: 8px; gap: 8px; }
+            .side-tile { width: 42px; height: 42px; font-size: 18px; }
         }
     </style>
 </head>
