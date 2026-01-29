@@ -14,10 +14,9 @@
             --light-blue: #00d2ff; 
             --neon-green: #00ff88; 
             --glass: rgba(15, 23, 42, 0.9); 
-            /* Brand Colors */
             --whatsapp: #25d366;
             --facebook: #1877F2;
-            --instagram: #E4405F;
+            --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --linkedin: #0077B5;
         }
 
@@ -30,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* SIDEBAR WITH INDIVIDUAL BRAND COLORS ON HOVER */
+        /* SIDEBAR FIX: STABLE ZOOM + COLORS */
         .side-dock {
             position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 10px; z-index: 100000;
@@ -38,16 +37,18 @@
         .side-tile {
             width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue);
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            color: white; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            color: white; text-decoration: none; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             font-size: 22px; backdrop-filter: blur(5px);
         }
-        /* The Right-Slide + Brand Color Magic */
-        .side-tile:hover { transform: scale(1.15) translateX(12px); color: white; border-color: transparent; }
+        .side-tile i { transition: 0.2s; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        /* THE "RIGHT-SLIDE" + ZOOM + COLORS */
+        .side-tile:hover { transform: scale(1.2) translateX(12px); color: #fff; border-color: transparent; }
         
-        .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 25px var(--whatsapp); }
-        .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 25px var(--facebook); }
-        .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 25px var(--instagram); }
-        .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 25px var(--linkedin); }
+        .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
+        .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
+        .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
+        .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
 
         /* NEON PULSE STATUS */
         .status-badge {
@@ -63,18 +64,19 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* SERVICE CARDS - GREEN GLOW & ZOOM */
+        /* SERVICE CARDS: THE ZOOM IS BACK */
         .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .card { 
             background: var(--glass); border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 20px; width: 330px; overflow: hidden; transition: 0.5s ease;
+            border-radius: 20px; width: 330px; overflow: hidden; 
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
             backdrop-filter: blur(10px);
         }
         .card:hover { 
-            transform: scale(1.06); 
+            transform: scale(1.08) translateY(-10px); /* FORCED ZOOM */
             border-color: var(--neon-green); 
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-            z-index: 5;
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4); /* GREEN GLOW */
+            z-index: 10;
         }
         .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 25px; }
@@ -90,20 +92,21 @@
             text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05);
             display: flex; flex-direction: column; align-items: center; transition: 0.3s;
         }
-        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); }
+        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); transform: translateY(-5px); }
 
         .btn-glow { 
             display: inline-block; background: var(--light-blue); color: #020617; 
             padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900;
+            transition: 0.3s;
         }
+        .btn-glow:hover { background: white; box-shadow: 0 0 20px var(--light-blue); transform: scale(1.05); }
 
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; }
         .footer-socials { margin-bottom: 20px; }
         .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
-        /* Footer social colors too */
         .fa-whatsapp:hover { color: var(--whatsapp); }
         .fa-facebook:hover { color: var(--facebook); }
-        .fa-instagram:hover { color: var(--instagram); }
+        .fa-instagram:hover { color: #dc2743; }
         .fa-linkedin:hover { color: var(--linkedin); }
 
         /* REVEAL ON SCROLL */
