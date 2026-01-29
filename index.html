@@ -14,6 +14,11 @@
             --light-blue: #00d2ff; 
             --neon-green: #00ff88; 
             --glass: rgba(15, 23, 42, 0.9); 
+            /* Brand Colors */
+            --whatsapp: #25d366;
+            --facebook: #1877F2;
+            --instagram: #E4405F;
+            --linkedin: #0077B5;
         }
 
         body { 
@@ -22,24 +27,27 @@
                 url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
             background-attachment: fixed; background-size: cover;
             color: white; font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* FIX: SIDEBAR NOW STAYS VISIBLE ON SNAP & MOBILE */
+        /* SIDEBAR WITH INDIVIDUAL BRAND COLORS ON HOVER */
         .side-dock {
             position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 10px; z-index: 100000;
         }
         .side-tile {
-            width: 45px; height: 45px; background: var(--glass); border: 1px solid var(--light-blue);
-            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
             color: white; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            font-size: 20px; backdrop-filter: blur(5px);
+            font-size: 22px; backdrop-filter: blur(5px);
         }
-        .side-tile:hover { 
-            transform: scale(1.1) translateX(10px); 
-            background: var(--light-blue); color: var(--dark-bg); 
-            box-shadow: 0 0 20px var(--light-blue);
-        }
+        /* The Right-Slide + Brand Color Magic */
+        .side-tile:hover { transform: scale(1.15) translateX(12px); color: white; border-color: transparent; }
+        
+        .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 25px var(--whatsapp); }
+        .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 25px var(--facebook); }
+        .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 25px var(--instagram); }
+        .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 25px var(--linkedin); }
 
         /* NEON PULSE STATUS */
         .status-badge {
@@ -55,26 +63,20 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* REVEAL ANIMATION */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* SERVICE CARDS - ADDED GREEN GLOW & ZOOM HOVER */
+        /* SERVICE CARDS - GREEN GLOW & ZOOM */
         .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .card { 
             background: var(--glass); border: 1px solid rgba(255,255,255,0.05); 
             border-radius: 20px; width: 330px; overflow: hidden; transition: 0.5s ease;
             backdrop-filter: blur(10px);
         }
-        /* THE ZOOM AND GREEN GLOW EFFECT */
         .card:hover { 
-            transform: scale(1.05); /* ZOOM IN */
+            transform: scale(1.06); 
             border-color: var(--neon-green); 
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4); /* GREEN GLOW */
-            z-index: 10;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            z-index: 5;
         }
-        .card-img { width: 100%; height: 200px; object-fit: cover; transition: 0.5s; }
-        .card:hover .card-img { filter: brightness(1.2); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 25px; }
 
         /* COMMAND CENTER */
@@ -95,26 +97,32 @@
             padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900;
         }
 
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; }
         .footer-socials { margin-bottom: 20px; }
-        .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; }
+        .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
+        /* Footer social colors too */
+        .fa-whatsapp:hover { color: var(--whatsapp); }
+        .fa-facebook:hover { color: var(--facebook); }
+        .fa-instagram:hover { color: var(--instagram); }
+        .fa-linkedin:hover { color: var(--linkedin); }
 
-        /* MOBILE ADJUSTMENTS */
-        @media (max-width: 500px) {
+        /* REVEAL ON SCROLL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 600px) {
             .side-dock { left: 5px; }
-            .side-tile { width: 38px; height: 38px; font-size: 16px; }
-            .container { padding: 10px; }
-            .card { width: 100%; }
+            .side-tile { width: 40px; height: 40px; font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
 <div class="side-dock">
-    <a href="https://wa.me/18763833293" class="side-tile" style="border-color: #25d366;" target="_blank"><i class="fab fa-whatsapp" style="color: #25d366;"></i></a>
-    <a href="https://www.facebook.com/share/174szanVGW/" class="side-tile" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/k.allentechrepair/" class="side-tile" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/company/k-allen-tech-services/" class="side-tile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://wa.me/18763833293" class="side-tile wa-tile" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/share/174szanVGW/" class="side-tile fb-tile" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/k.allentechrepair/" class="side-tile ig-tile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/k-allen-tech-services/" class="side-tile li-tile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
 </div>
 
 <header>
