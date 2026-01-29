@@ -13,118 +13,119 @@
             --dark-bg: #020617; 
             --light-blue: #00d2ff; 
             --neon-green: #00ff88; 
-            --glass: rgba(15, 23, 42, 0.9); 
+            --glass: rgba(15, 23, 42, 0.8); 
             --whatsapp: #25d366;
             --facebook: #1877F2;
             --instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --linkedin: #0077B5;
         }
 
-        /* CUSTOM NEON SCROLLBAR */
+        /* 1. PROGRESS BAR */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 4px;
+            background: linear-gradient(to right, var(--light-blue), var(--neon-green));
+            z-index: 100001; width: 0%; transition: width 0.1s;
+        }
+
+        /* CUSTOM SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--dark-bg); }
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(var(--light-blue), var(--neon-green)); 
-            border-radius: 10px; 
-        }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--light-blue), var(--neon-green)); border-radius: 10px; }
 
         body { 
             margin: 0; padding: 0; background-color: var(--dark-bg);
-            background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)),
-                url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
-            background-attachment: fixed; background-size: cover;
+            /* 2. CYBER GRID BACKGROUND */
+            background-image: 
+                linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.9)),
+                linear-gradient(to right, rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
             color: white; font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden; -webkit-tap-highlight-color: transparent;
         }
 
         /* SIDEBAR */
-        .side-dock {
-            position: fixed; left: 10px; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 10px; z-index: 100000;
-        }
+        .side-dock { position: fixed; left: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 100000; }
         .side-tile {
             width: 48px; height: 48px; background: var(--glass); border: 1px solid var(--light-blue);
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
             text-decoration: none; transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            font-size: 22px; backdrop-filter: blur(5px);
+            font-size: 22px; backdrop-filter: blur(10px);
         }
         .side-tile i { color: white !important; }
         .side-tile:hover, .side-tile:active { transform: scale(1.2) translateX(12px); border-color: transparent; }
-        .wa-tile:hover, .wa-tile:active { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
-        .fb-tile:hover, .fb-tile:active { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
-        .ig-tile:hover, .ig-tile:active { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
-        .li-tile:hover, .li-tile:active { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
+        .wa-tile:hover { background: var(--whatsapp) !important; box-shadow: 0 0 20px var(--whatsapp); }
+        .fb-tile:hover { background: var(--facebook) !important; box-shadow: 0 0 20px var(--facebook); }
+        .ig-tile:hover { background: var(--instagram) !important; box-shadow: 0 0 20px #dc2743; }
+        .li-tile:hover { background: var(--linkedin) !important; box-shadow: 0 0 20px var(--linkedin); }
 
-        header { padding: 60px 20px; text-align: center; }
+        /* 3. GLOWING HEADER */
+        header { padding: 80px 20px; text-align: center; }
+        .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; box-shadow: 0 0 30px rgba(0, 210, 255, 0.3); }
+        h1 { margin: 0; font-size: 3rem; font-weight: 900; letter-spacing: 5px; text-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
+
         .status-badge { display: inline-flex; align-items: center; background: rgba(0, 255, 136, 0.1); color: var(--neon-green); padding: 12px 25px; border-radius: 50px; border: 1px solid var(--neon-green); margin-bottom: 20px; font-weight: bold; }
         .dot { width: 12px; height: 12px; background: var(--neon-green); border-radius: 50%; margin-right: 12px; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0px rgba(0, 255, 136, 0.7); } 100% { box-shadow: 0 0 0 15px rgba(0, 255, 136, 0); } }
         
-        .logo-img { width: 130px; border-radius: 50%; border: 3px solid var(--light-blue); margin: 0 auto 15px auto; display: block; background: white; }
-
-        /* SERVICE TILES */
+        /* CARDS */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
         .card { 
             background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 20px; width: 330px; overflow: hidden; 
-            transition: transform 0.3s ease-out !important;
-            position: relative;
-            backface-visibility: hidden;
-            transform: translateZ(0);
+            transition: all 0.4s ease; position: relative;
         }
-        .card:hover, .card:active { 
-            transform: scale(1.08) translateY(-5px) !important; 
-            border-color: var(--neon-green) !important; 
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2) !important;
-            z-index: 10;
-        }
-        .card-img { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 25px; }
+        .card:hover { transform: scale(1.05) translateY(-10px); border-color: var(--neon-green); box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2); }
+        .card-img { width: 100%; height: 200px; object-fit: cover; filter: grayscale(30%); transition: 0.4s; }
+        .card:hover .card-img { filter: grayscale(0%); }
 
         /* TRUST BAR */
-        .trust-bar {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
-            margin: 60px 0 20px 0; padding: 20px; text-align: center;
-        }
-        .trust-item { 
-            font-size: 0.85rem; font-weight: 900; letter-spacing: 1.5px; 
-            color: var(--light-blue); display: flex; align-items: center; gap: 10px;
-        }
-        .trust-item i { color: var(--neon-green); font-size: 1.2rem; }
+        .trust-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin: 60px 0 20px 0; }
+        .trust-item { font-size: 0.8rem; font-weight: 900; letter-spacing: 2px; color: var(--light-blue); display: flex; align-items: center; gap: 10px; opacity: 0.8; }
+        .trust-item i { color: var(--neon-green); }
 
-        /* COMMAND CENTER */
+        /* 4. COMMAND CENTER GLOW */
         .contact-hub { 
-            padding: 40px 20px; background: rgba(0, 210, 255, 0.05); 
-            border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center; 
+            padding: 50px 20px; background: rgba(0, 210, 255, 0.03); 
+            border-radius: 30px; border: 1px solid rgba(0, 210, 255, 0.2); text-align: center;
+            position: relative; overflow: hidden;
+            animation: borderGlow 4s infinite alternate;
         }
+        @keyframes borderGlow { from { border-color: rgba(0, 210, 255, 0.2); } to { border-color: var(--neon-green); box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.05); } }
+
         .hub-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
-        .hub-item { 
-            background: var(--glass); padding: 20px; border-radius: 12px; min-width: 280px; 
-            text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05); 
-            display: flex; flex-direction: column; align-items: center; transition: 0.3s; 
-        }
-        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); }
+        .hub-item { background: var(--glass); padding: 20px; border-radius: 12px; min-width: 280px; text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
+        .hub-item:hover { border-color: var(--light-blue); background: rgba(0, 210, 255, 0.1); transform: scale(1.02); }
         .hub-item i { font-size: 1.8rem; color: var(--light-blue); margin-bottom: 10px; }
 
-        .btn-glow { display: inline-block; background: var(--light-blue); color: #020617; padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900; transition: 0.3s; }
-        .btn-glow:hover { background: white; box-shadow: 0 0 20px var(--light-blue); }
+        /* SHINE BUTTON EFFECT */
+        .btn-glow { 
+            position: relative; display: inline-block; background: var(--light-blue); color: #020617; 
+            padding: 20px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; 
+            overflow: hidden; transition: 0.3s; 
+        }
+        .btn-glow::after {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg); animation: shine 3s infinite;
+        }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        .btn-glow:hover { background: white; transform: scale(1.05); box-shadow: 0 0 30px var(--light-blue); }
 
-        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem; }
-        .footer-socials { margin-bottom: 20px; }
-        .footer-socials a { color: white; margin: 0 15px; font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
-        .fa-whatsapp:hover { color: var(--whatsapp); }
-        .fa-facebook:hover { color: var(--facebook); }
-        .fa-instagram:hover { color: #dc2743; }
-        .fa-linkedin:hover { color: var(--linkedin); }
+        footer { text-align: center; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; font-size: 0.85rem; }
+        .footer-socials { margin-bottom: 25px; }
+        .footer-socials a { color: #888; margin: 0 15px; font-size: 1.6rem; transition: 0.3s; }
+        .footer-socials a:hover { color: white; transform: translateY(-5px); }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s all ease; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        @media (max-width: 600px) { .side-dock { left: 5px; } .side-tile { width: 40px; height: 40px; font-size: 18px; } .card { width: 100%; } .trust-bar { gap: 15px; } }
+        @media (max-width: 600px) { .side-dock { display: none; } h1 { font-size: 2rem; } .card { width: 100%; } }
     </style>
 </head>
 <body>
+
+<div id="scroll-progress"></div>
 
 <div class="side-dock">
     <a href="https://wa.me/18763833293" class="side-tile wa-tile" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -134,35 +135,36 @@
 </div>
 
 <header>
-    <div class="status-badge"><div class="dot"></div> SYSTEMS OPERATIONAL | KINGSTON 10</div>
+    <div class="status-badge"><div class="dot"></div> K.A.T.S. ACTIVE | KINGSTON, JA</div>
     <img src="logo.png" alt="K. Allen Tech" class="logo-img">
-    <h1 style="margin: 0; font-size: 2.8rem; font-weight: 900;">K. ALLEN TECH</h1>
-    <p style="color: var(--light-blue); font-size: 1.2rem; margin-top: 10px; font-weight: bold;">Father & Son: Precision Engineering • Trusted Repairs</p>
+    <h1>K. ALLEN TECH</h1>
+    <p style="color: var(--light-blue); font-size: 1.2rem; margin-top: 10px; font-weight: bold; letter-spacing: 2px;">PRECISION ENGINEERING • FATHER & SON TRUST</p>
 </header>
 
 <div class="container">
     <div class="services-grid">
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Computer Repair</h3><p>Board-level diagnostics and custom hardware solutions.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Printer Servicing</h3><p>Mechanical restoration and laser/inkjet maintenance.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Phone Support</h3><p>Screen precision repair and software optimization.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Virus & Security</h3><p>Total malware eradication and system hardening.</p></div></div>
-        <div class="card reveal"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Tech Consulting</h3><p>Infrastructure design for small businesses.</p></div></div>
+        <div class="card reveal"><img src="https://images.unsplash.com/photo-1555617766-c94804975da3?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Computer Repair</h3><p>Advanced board diagnostics and custom hardware restoration.</p></div></div>
+        <div class="card reveal"><img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Printer Servicing</h3><p>Mechanical precision for laser, inkjet, and industrial plotters.</p></div></div>
+        <div class="card reveal"><img src="https://images.unsplash.com/photo-1746005514011-ea00280f3b6e?auto=format&fit=crop&w=800&q=80" class="card-img"><div class="card-content"><h3>Mobile Diagnostics</h3><p>Screen replacement and deep software optimization.</p></div></div>
+        <div class="card reveal"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Cyber Security</h3><p>System hardening and total malware eradication protocols.</p></div></div>
+        <div class="card reveal"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" class="card-img"><div class="card-content"><h3>Tech Consulting</h3><p>IT infrastructure design for small business growth.</p></div></div>
     </div>
 
     <div class="trust-bar reveal">
-        <div class="trust-item"><i class="fas fa-certificate"></i> CERTIFIED TECH</div>
-        <div class="trust-item"><i class="fas fa-microchip"></i> OEM PARTS</div>
-        <div class="trust-item"><i class="fas fa-bolt"></i> FAST TURNAROUND</div>
+        <div class="trust-item"><i class="fas fa-microchip"></i> OEM GRADE PARTS</div>
+        <div class="trust-item"><i class="fas fa-shield-alt"></i> 90-DAY WARRANTY</div>
+        <div class="trust-item"><i class="fas fa-shipping-fast"></i> EXPRESS REPAIR</div>
     </div>
 
     <div class="contact-hub reveal">
-        <h2 style="margin: 10px 0;"><i class="fas fa-map-marker-alt"></i> Grovedale Drive, Kingston 10</h2>
+        <h2 style="letter-spacing: 2px;"><i class="fas fa-terminal"></i> COMMAND CENTER</h2>
+        <p style="color: #888; margin-bottom: 30px;">Grovedale Drive, Kingston 10, Jamaica</p>
         <div class="hub-grid">
             <a href="tel:+18763833293" class="hub-item"><i class="fas fa-phone-alt"></i><span>876-383-3293</span></a>
             <a href="tel:+18763791037" class="hub-item"><i class="fas fa-phone"></i><span>876-379-1037</span></a>
-            <a href="mailto:k.allentechrepair@gmail.com" class="hub-item"><i class="fas fa-envelope"></i><span>k.allentechrepair@gmail.com</span></a>
-            <a href="mailto:kdahc42@gmail.com" class="hub-item"><i class="fas fa-envelope-open"></i><span>kdahc42@gmail.com</span></a>
-            <a href="mailto:marquino.allen16@gmail.com" class="hub-item"><i class="fas fa-paper-plane"></i><span>marquino.allen16@gmail.com</span></a>
+            <a href="mailto:k.allentechrepair@gmail.com" class="hub-item"><i class="fas fa-envelope"></i><span>Primary Email</span></a>
+            <a href="mailto:kdahc42@gmail.com" class="hub-item"><i class="fas fa-envelope-open"></i><span>Support Line</span></a>
+            <a href="mailto:marquino.allen16@gmail.com" class="hub-item"><i class="fas fa-paper-plane"></i><span>Management</span></a>
         </div>
         <div class="booking-zone">
             <a href="https://forms.gle/rURbycEBsTP77bRE8" class="btn-glow" target="_blank">INITIATE REPAIR TICKET</a>
@@ -177,10 +179,18 @@
         <a href="https://www.instagram.com/k.allentechrepair/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/k-allen-tech-services/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
-    <p>&copy; 2026 K.A.T.S. (K. Allen Tech Services). All Rights Reserved. <br> Precision Engineering • Kingston, Jamaica</p>
+    <p>&copy; 2026 K.A.T.S. (K. Allen Tech Services). All Rights Reserved. <br> Kingston, Jamaica | Precision Engineering</p>
 </footer>
 
 <script>
+    window.onscroll = function() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-progress").style.width = scrolled + "%";
+        reveal();
+    };
+
     function reveal() {
         var reveals = document.querySelectorAll(".reveal");
         for (var i = 0; i < reveals.length; i++) {
@@ -189,7 +199,6 @@
             if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
         }
     }
-    window.addEventListener("scroll", reveal);
     reveal();
 </script>
 
