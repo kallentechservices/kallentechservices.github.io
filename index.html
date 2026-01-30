@@ -54,7 +54,6 @@
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: 0.3; }
         #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--light-blue), var(--neon-green)); z-index: 100001; width: 0%; }
 
-        /* MOVED DOCK TO THE RIGHT */
         .side-dock { position: fixed; right: 15px; left: auto; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 2000; }
         .side-tile { width: 50px; height: 50px; background: #0d1117; border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .side-tile i { color: #ffffff !important; font-size: 24px; }
@@ -76,7 +75,6 @@
 
         h1 { margin: 0; font-size: 3.5rem; font-weight: 900; letter-spacing: 5px; color: #fff; }
 
-        /* CONTAINER PADDING ON THE RIGHT TO CLEAR THE DOCK */
         .container { max-width: 1200px; margin: 0 auto; padding: 20px 70px 20px 20px; }
         
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -94,6 +92,14 @@
         .hub-row { background: rgba(255,255,255,0.05); padding: 18px 25px; border-radius: 12px; text-decoration: none; color: #fff; display: flex; align-items: center; gap: 20px; transition: 0.3s; }
         .hub-row i { color: var(--light-blue); }
         .hub-row .label { color: var(--neon-green); font-size: 0.7rem; font-weight: 900; border: 1px solid var(--neon-green); padding: 3px 8px; border-radius: 5px; min-width: 70px; text-align: center; }
+        
+        /* THE MOBILE EMAIL FIX */
+        .hub-row .detail { 
+            word-break: break-all; 
+            text-align: left;
+            line-height: 1.2;
+        }
+
         .hub-row:hover { background: rgba(255,255,255,0.1); transform: scale(1.02); }
 
         .btn-glow { background: var(--light-blue); color: #000; padding: 22px 60px; border-radius: 15px; text-decoration: none; font-weight: 900; font-size: 1.2rem; transition: 0.3s; display: inline-block; margin-bottom: 40px; }
@@ -111,6 +117,15 @@
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* EXTRA PHONE ADJUSTMENTS */
+        @media (max-width: 480px) {
+            .hub-row { padding: 15px; gap: 10px; }
+            .hub-row .detail { font-size: 0.9rem; }
+            .container { padding: 20px 15px; } /* Reset padding for mobile */
+            .side-dock { display: none; } /* Hide dock on mobile to prevent blocking info */
+            h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
